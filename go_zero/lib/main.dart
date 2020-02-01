@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_zero/screens/mvp_gothrough/screen1.dart';
+import 'package:go_zero/screens/mvp_route/screen1.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,10 +8,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'GoZero',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-       
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green,
       ),
       home: InitScreen(),
     );
