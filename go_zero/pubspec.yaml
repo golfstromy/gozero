@@ -34,8 +34,9 @@ flutter:
         - asset: fonts/Montserrat/Montserrat-Italic.ttf
           style: italic
         - asset: fonts/Montserrat/Montserrat-Bold.ttf
-          style: bold
           weight: 700
+        - asset: fonts/Montserrat/Montserrat-SemiBold.ttf
+          weight: 600
         
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
