@@ -4,9 +4,11 @@ import '../images.dart';
 import '../screensize.dart';
 import '../textstyle.dart';
 
+const double _TEXTSIZE = 14;
+
 Widget bulletPoint(BuildContext context, List<TextSpan> infotext) {
   return Padding(
-      padding: EdgeInsets.only(bottom: 0.02 * getScreenHeight(context), left: 0.037 * getScreenWidth(context)),
+      padding: EdgeInsets.only(bottom: 0.023 * getScreenHeight(context), left: 0.037 * getScreenWidth(context)),
       child: Row(
         //mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -18,8 +20,8 @@ Widget bulletPoint(BuildContext context, List<TextSpan> infotext) {
                       0.017 * getScreenWidth(context)),
               child: RichText(
                   text: TextSpan(
-                      style: GoZeroTextStyles.regular(14), children: infotext)))
+                      style: GoZeroTextStyles.regular(_TEXTSIZE), children: infotext)))
         ],
       ));
 }
-//TODO: Methode zur Generierung von Richtext mit Bold usw. (3 Teile als Parameter)
+//TODO: Generalize generation of bulletpoints, z.B. map String text:String fontstyle, "Global" : "regular" // see ordered_bulletpoint
