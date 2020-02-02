@@ -19,25 +19,7 @@ class InitScreen extends StatelessWidget {
           Container(
               child: Align(
             alignment: Alignment.center,
-            child: bigCircle(
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text("Show our planet", style: GoZeroTextStyles.semibold()),
-                    RichText(
-                        text: TextSpan(
-                      style: GoZeroTextStyles.bold(),
-                      children: <TextSpan>[
-                        TextSpan(text: "some "),
-                        TextSpan(
-                            text: "love",
-                            style: GoZeroTextStyles.semibold(
-                                color: GoZeroColors.green)),
-                        TextSpan(text: "."),
-                      ],
-                    ))
-                  ]),
-            ),
+            child: circleWithText("Show our planet\nsome ", "love")
           )),
           Positioned(
             top: 0.2354 * getScreenHeight(context),
