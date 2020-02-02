@@ -24,7 +24,7 @@ static const double DEFAULTREGULARSIZE = MULTIPLIER * 9;
   }
 
 
-  static TextStyle regular({Color color = Colors.black, double fontSize = DEFAULTREGULARSIZE}) {
+  static TextStyle regular([double fontSize = DEFAULTREGULARSIZE, Color color = Colors.black]) {
     return TextStyle(
       color: color,
       fontFamily: "Montserrat",
@@ -42,3 +42,4 @@ static TextStyle regularLetterSpaced({Color color = Colors.black, double fontSiz
     );
   }  
 }
+
