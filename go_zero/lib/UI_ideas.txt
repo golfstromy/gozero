@@ -1,1 +1,3 @@
 - Skipbutton (oder swipen)? bis screen5, für Leute, die es schon öfters gemacht haben 
+- 2 in CO2 runtergesetzt
+- Haptic feedback
