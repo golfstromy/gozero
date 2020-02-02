@@ -46,6 +46,7 @@ List<Widget> getSteps(BuildContext context, List<String> texts,
   return steps;
 }
 
+//TODO: FIX ALIGNMENT
 Widget singleStep(BuildContext context, int numToPrint, String text,
     {String fineprint = ""}) {
   return Padding(
