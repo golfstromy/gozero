@@ -5,6 +5,7 @@ import '../textstyle.dart';
 
 const double DEFAULTWIDTH = 264;
 
+//TODO: Width von Screengröße abhängig machen, ebenso images darin etc.
 Widget bigCircle(
     {double size = DEFAULTWIDTH,
     Widget child = const SizedBox(),
@@ -19,6 +20,7 @@ Widget bigCircle(
               Border.all(color: GoZeroColors.circleGrey, width: thickness)));
 }
 
+const double _LOGOTEXTSIZE = 24;
 Widget circleWithText(String blacktext, String greenText,
     {bool blackFullStop = true,
     double size = DEFAULTWIDTH,
@@ -34,7 +36,7 @@ Widget circleWithText(String blacktext, String greenText,
               TextSpan(text: blacktext),
               TextSpan(
                   text: greenText,
-                  style: GoZeroTextStyles.semibold(color: GoZeroColors.green)),
+                  style: GoZeroTextStyles.semibold( _LOGOTEXTSIZE, color: GoZeroColors.green)),
               TextSpan(text: blackFullStop ? "." : ""),
             ],
           )));
