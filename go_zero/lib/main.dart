@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:go_zero/screens/mvp_route/screen1.dart';
-import 'package:go_zero/screens/mvp_route/screen2.dart';
-import 'package:go_zero/screens/mvp_route/screen4.dart';
+import 'package:flutter/services.dart';
 
+import 'screens/mvp_route/screen1.dart';
+import 'screens/mvp_route/screen2.dart';
 import 'screens/mvp_route/screen3.dart';
+import 'screens/mvp_route/screen4.dart';
+import 'screens/mvp_route/screen12.dart';
+import 'screens/mvp_route/screen9.dart';
 
-void main() => runApp(MyApp());
+Future main() async {
+  runApp(GoZeroApp());
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+}
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class GoZeroApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -23,8 +28,12 @@ class MyApp extends StatelessWidget {
         '/init': (context) => InitScreen(),
         '/screen2': (context) => ChallengeScreen(),
         '/screen3': (context) => HowItWorksScreen(),
-        '/screen4': (context) => CalculateIntroScreen()
+        '/screen4': (context) => CalculateIntroScreen(),
+        '/screen9': (context) => OffsetIntroScreen(),
+        '/screen12': (context) => ShareIntroScreen(),
+        '/finish': (context) => InitScreen()
       },
     );
   }
 }
+//TODO '/finish' screen
