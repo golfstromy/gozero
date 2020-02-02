@@ -1,53 +1,51 @@
 import 'package:flutter/material.dart';
+
 import 'ui/colors.dart';
+import 'ui/images.dart';
 import 'ui/screensize.dart';
 import 'ui/textstyle.dart';
 import 'ui/widgets/circle.dart';
 
-class InitScreen extends StatefulWidget {
-  @override
-  _InitScreenState createState() => _InitScreenState();
-}
-
-class _InitScreenState extends State<InitScreen> {
+class InitScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+        body: GestureDetector(
+          onTap: () => Navigator.pushNamed(context, "/screen2"),
+      child: Stack(
         children: <Widget>[
-         // Column(
-           // children: <Widget>[
-              //Image.asset("/assets/logoWithoutArrows.png"),
-              Container(
-                  child: Align(
-                alignment: Alignment.center,
-                child: bigCircle(
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text("Show our planet",
-                            style: GoZeroTextStyles.semibold()),
-                        RichText(
-                            text: TextSpan(
-                          style: GoZeroTextStyles.bold(),
-                          children: <TextSpan>[
-                            TextSpan(text: "some "),
-                            TextSpan(
-                                text: "love",
-                                style: GoZeroTextStyles.semibold(
-                                    color: GoZeroColors.green)),
-                            TextSpan(text: "."),
-                          ],
-                        ))
-                      ]),
-                ),
-              )),
-            //],
-          //),
+          Container(
+              child: Align(
+            alignment: Alignment.center,
+            child: bigCircle(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("Show our planet", style: GoZeroTextStyles.semibold()),
+                    RichText(
+                        text: TextSpan(
+                      style: GoZeroTextStyles.bold(),
+                      children: <TextSpan>[
+                        TextSpan(text: "some "),
+                        TextSpan(
+                            text: "love",
+                            style: GoZeroTextStyles.semibold(
+                                color: GoZeroColors.green)),
+                        TextSpan(text: "."),
+                      ],
+                    ))
+                  ]),
+            ),
+          )),
+          Positioned(
+            top: 0.2354 * getScreenHeight(context),
+            right: 1.5 * SMALLGAP(context),
+            child: LOGOWIDGET,
+          ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Padding(
-              padding: EdgeInsets.only(bottom: getScreenHeight(context) * 0.05),
+              padding: EdgeInsets.only(bottom: SMALLGAP(context)),
               child: Text("PRESS ANYWHERE TO CONTINUE",
                   textAlign: TextAlign.center,
                   style: GoZeroTextStyles.regularLetterSpaced(
@@ -56,6 +54,6 @@ class _InitScreenState extends State<InitScreen> {
           )
         ],
       ),
-    );
+    ));
   }
 }
