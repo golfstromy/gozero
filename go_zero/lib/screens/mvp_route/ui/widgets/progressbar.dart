@@ -22,3 +22,8 @@ Widget progressbar(int index, BuildContext context) {
     children: indicators,
   );
 }
+
+/*Auch interessant:
+https://pub.dev/packages/progress_indicators
+https://pub.dev/packages/percent_indicator
+*/
