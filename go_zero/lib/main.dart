@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_zero/screens/mvp_route/screen1.dart';
+import 'package:go_zero/screens/mvp_route/screen2.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +15,11 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.green,
       ),
       home: InitScreen(),
+      initialRoute: '/init',
+      routes: {
+        '/init': (context) => InitScreen(),
+        '/screen2': (context) => ChallengeScreen(),
+      },
     );
   }
 }
