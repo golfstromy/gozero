@@ -17,3 +17,7 @@ TextSpan logoAsText([double fontSize]) {
             : GoZeroTextStyles.regular(null, color: GoZeroColors.green))
   ]);
 }
+
+RichText logoAsRichText([double fontSize]) {
+  return RichText(text: fontSize != null ? logoAsText(fontSize) : logoAsText());
+}
