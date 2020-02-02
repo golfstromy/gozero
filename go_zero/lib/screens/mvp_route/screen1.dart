@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_zero/screens/mvp_route/ui/widgets/logoAsText.dart';
+import 'package:flutter/services.dart';
 import 'package:go_zero/screens/mvp_route/ui/widgets/pressAnywhereLabel.dart';
 
 import 'ui/colors.dart';
@@ -7,14 +7,15 @@ import 'ui/screensize.dart';
 import 'ui/widgets/circle.dart';
 import 'ui/widgets/logo.dart';
 
-
-
 class InitScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: GestureDetector(
-      onTap: () => Navigator.pushNamed(context, "/screen2"),
+      onTap: () {
+        Navigator.pushNamed(context, "/screen2");
+        HapticFeedback.lightImpact(); //TODO: Testen
+      },
       child: Stack(
         children: <Widget>[
           Container(color: GoZeroColors.background),
