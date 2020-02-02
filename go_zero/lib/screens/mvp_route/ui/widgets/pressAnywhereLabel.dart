@@ -4,6 +4,8 @@ import '../colors.dart';
 import '../screensize.dart';
 import '../textstyle.dart';
 
+const double FONTSIZE = 9;
+
 Widget pressAnywhere(BuildContext context,
     [Color color = GoZeroColors.yellow]) {
   return Align(
@@ -12,7 +14,7 @@ Widget pressAnywhere(BuildContext context,
       padding: EdgeInsets.only(bottom: SMALLGAP(context)),
       child: Text("PRESS ANYWHERE TO CONTINUE",
           textAlign: TextAlign.center,
-          style: GoZeroTextStyles.regularLetterSpaced(color: color)),
+          style: GoZeroTextStyles.regular(FONTSIZE, color: color)),
     ),
   );
 }
