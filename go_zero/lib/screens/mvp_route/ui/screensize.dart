@@ -7,3 +7,7 @@ double getScreenWidth(BuildContext context){
 double getScreenHeight(BuildContext context){
   return MediaQuery.of(context).size.height;
 }
+
+double SMALLGAP(BuildContext context){
+  return getScreenHeight(context) * 0.05;
+}
