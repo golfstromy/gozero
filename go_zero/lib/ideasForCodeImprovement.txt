@@ -1,0 +1,6 @@
+- GeneralScreen.dart schreiben, in dem bereits Stack mit Press Anywhere Label, progress indicator (und GestureDetecto?)r drin sind. 
+    Also einfach nur noch genereralScreen(int index, List<Widget> elements) aufrufen, wobei elements children von Stack sind
+- custom Widgets direkt als Klasse schreiben
+- bulletpoints so wie ordered bulletpoints mit boldindex übergeben
+- mehr Constants auf private setzen, v.a. innerhalb von Screens etc.
+- auf jeden Screen Variablen mit nextScreen=... und previousScreen; Dann auf ersten index=0 und bei allen folgenden einfach index=previousScreen.index+1
