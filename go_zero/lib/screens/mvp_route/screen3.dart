@@ -57,7 +57,7 @@ class HowItWorksScreen extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(
                               top: 0.021 * getScreenHeight(context)),
-                          child: getStepsAsCol(context, [
+                          child: getStepsAsCol(context, [ 
                             "Get aware of your personal impact on \nclimate change by determining your \nCO2 carbon footprint",
                             "Compensate your CO2 emissions on a\nweekly, monthly or yearly basis*",
                             "*We are currently working on even better solutions, but this is an awesome thing to start with!",

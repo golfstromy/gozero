@@ -15,8 +15,8 @@ Widget bigCircle(
       child: Align(alignment: Alignment.center, child: child),
       decoration: BoxDecoration(
           shape: BoxShape.circle,
-          border: Border.all(
-              color: GoZeroColors.circleGrey, width: thickness)));
+          border:
+              Border.all(color: GoZeroColors.circleGrey, width: thickness)));
 }
 
 Widget circleWithText(String blacktext, String greenText,
