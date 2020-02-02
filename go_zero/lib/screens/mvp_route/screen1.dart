@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_zero/screens/mvp_route/ui/widgets/pressAnywhereLabel.dart';
 
 import 'ui/colors.dart';
 import 'ui/images.dart';
@@ -11,9 +12,10 @@ class InitScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: GestureDetector(
-          onTap: () => Navigator.pushNamed(context, "/screen2"),
+      onTap: () => Navigator.pushNamed(context, "/screen2"),
       child: Stack(
         children: <Widget>[
+          Container(color: GoZeroColors.background),
           Container(
               child: Align(
             alignment: Alignment.center,
@@ -40,18 +42,9 @@ class InitScreen extends StatelessWidget {
           Positioned(
             top: 0.2354 * getScreenHeight(context),
             right: 1.5 * SMALLGAP(context),
-            child: LOGOWIDGET,
+            child: LOGOWIDGET(1.2),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: EdgeInsets.only(bottom: SMALLGAP(context)),
-              child: Text("PRESS ANYWHERE TO CONTINUE",
-                  textAlign: TextAlign.center,
-                  style: GoZeroTextStyles.regularLetterSpaced(
-                      color: GoZeroColors.yellow)),
-            ),
-          )
+          pressAnywhere(context)
         ],
       ),
     ));
