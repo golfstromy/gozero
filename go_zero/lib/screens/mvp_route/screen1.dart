@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:go_zero/screens/mvp_route/ui/widgets/logoAsText.dart';
 import 'package:go_zero/screens/mvp_route/ui/widgets/pressAnywhereLabel.dart';
 
 import 'ui/colors.dart';
-import 'ui/images.dart';
 import 'ui/screensize.dart';
-import 'ui/textstyle.dart';
 import 'ui/widgets/circle.dart';
+import 'ui/widgets/logo.dart';
+
+
 
 class InitScreen extends StatelessWidget {
   @override
@@ -18,13 +20,12 @@ class InitScreen extends StatelessWidget {
           Container(color: GoZeroColors.background),
           Container(
               child: Align(
-            alignment: Alignment.center,
-            child: circleWithText("Show our planet\nsome ", "love")
-          )),
+                  alignment: Alignment.center,
+                  child: circleWithText("Show our planet\nsome ", "love"))),
           Positioned(
             top: 0.2354 * getScreenHeight(context),
             right: 1.5 * SMALLGAP(context),
-            child: LOGOWIDGET(1.2),
+            child: LOGOTEXTWIDGET(),
           ),
           pressAnywhere(context)
         ],
