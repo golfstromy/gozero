@@ -17,7 +17,7 @@ Widget bigCircle(
       decoration: BoxDecoration(
           shape: BoxShape.circle,
           border:
-              Border.all(color: GoZeroColors.circleGrey, width: thickness)));
+              Border.all(color: GoZeroColors.controlGrey, width: thickness)));
 }
 
 const double _LOGOTEXTSIZE = 24;
