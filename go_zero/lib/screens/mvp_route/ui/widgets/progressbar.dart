@@ -5,7 +5,7 @@ import 'package:go_zero/screens/mvp_route/ui/screensize.dart';
 
 Widget progressbar(int index, BuildContext context) {
   double abstand = 0.0045 * getScreenHeight(context);
-  double standardBreite = 2 * abstand;
+  double selectedWidth = 0.016*getScreenHeight(context);
 
   List<Widget> indicators = [];
   for (int i = 0; i < steps; i++) {
@@ -13,7 +13,7 @@ Widget progressbar(int index, BuildContext context) {
         padding: EdgeInsets.only(top: i == 0 ? 0 : abstand),
         child: Container(
             height: (getScreenHeight(context) / steps) - abstand,
-            width: i <= index ? 1.5 * standardBreite : standardBreite,
+            width: i <= index ? selectedWidth : (2/3)*selectedWidth,
             color: i <= index ? GoZeroColors.green : GoZeroColors.grey)));
   }
   return Column(
