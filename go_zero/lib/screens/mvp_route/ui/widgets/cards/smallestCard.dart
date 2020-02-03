@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../cards.dart';
 import '../../colors.dart';
 import '../../screensize.dart';
 import 'customCard.dart';
@@ -27,21 +28,23 @@ class _SmallestCardState extends State<SmallestCard> {
   @override
   Widget build(BuildContext context) {
     double _WIDTH = 0.208 * getScreenWidth(context);
+    double _HEIGHT = Cards.DEFAULTCARDHEIGHTFACTOR * getScreenHeight(context);
+
     return widget.selectable
         ? widget.textSelectable
             ? OnlyTextSelectableCustomCard(
-                //height: Cards.DEFAULTCARDHEIGHTFACTOR * getScreenHeight(context),
+                height: _HEIGHT,
                 text: widget.text,
                 width: _WIDTH,
                 fontSize: _SMALLESTCARDFONTSIZE,
               )
             : CustomCard(
-                //height: Cards.DEFAULTCARDHEIGHTFACTOR * getScreenHeight(context),
+                height: _HEIGHT,
                 child: widget.child,
                 width: _WIDTH,
               )
         : CustomCardWithoutSelection(
-            //height: Cards.DEFAULTCARDHEIGHTFACTOR * getScreenHeight(context),
+            height: _HEIGHT,
             child: widget.child,
             width: _WIDTH,
             color: GoZeroColors.controlBackground);
