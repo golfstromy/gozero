@@ -46,7 +46,7 @@ List<Widget> getSteps(BuildContext context, List<String> texts,
   return steps;
 }
 
-//TODO: FIX ALIGNMENT
+
 Widget singleStep(BuildContext context, int numToPrint, String text,
     {String fineprint = ""}) {
   return Padding(
@@ -57,16 +57,19 @@ Widget singleStep(BuildContext context, int numToPrint, String text,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          RichText(
-              text: TextSpan(children: <TextSpan>[
-            TextSpan(
-                text: "#",
-                style: GoZeroTextStyles.regular(_NUMBERFONTSIZE,
-                    color: GoZeroColors.green)),
-            TextSpan(
-                text: numToPrint.toString(),
-                style: GoZeroTextStyles.regular(_NUMBERFONTSIZE))
-          ])),
+          Container(
+            //TODO: FIX ALIGNMENT --> width: ...,
+            child: RichText(
+                text: TextSpan(children: <TextSpan>[
+              TextSpan(
+                  text: "#",
+                  style: GoZeroTextStyles.regular(_NUMBERFONTSIZE,
+                      color: GoZeroColors.green)),
+              TextSpan(
+                  text: numToPrint.toString(),
+                  style: GoZeroTextStyles.regular(_NUMBERFONTSIZE))
+            ])),
+          ),
           Padding(
               padding: EdgeInsets.only(left: 0.017 * getScreenWidth(context)),
               child: RichText(
