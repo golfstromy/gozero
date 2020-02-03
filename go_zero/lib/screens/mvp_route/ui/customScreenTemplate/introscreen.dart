@@ -42,7 +42,7 @@ Scaffold introscreen(BuildContext context, int stepNum, String imagepath,
                 Padding(
                     padding: EdgeInsets.only(
                         top: 0.6912 * getScreenHeight(context),
-                        left: 0.084 * getScreenWidth(context)),
+                        left: 0.15 * getScreenWidth(context)),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
