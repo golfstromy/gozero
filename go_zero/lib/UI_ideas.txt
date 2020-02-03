@@ -1,4 +1,6 @@
 - Skipbutton (oder swipen)? bis screen5, für Leute, die es schon öfters gemacht haben 
 - 2 in CO2 runtergesetzt
-- Haptic feedback
-- Einstellung mit Einheiten (kg/lb, €/USD usw)
+- Haptic feedback überall
+- Einstellung mit Einheiten (kg/lb, €/USD usw)^
+- SwipeDetector, hochscrollen
+- Eingabe von Gewicht neben Slider

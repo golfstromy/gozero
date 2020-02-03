@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_zero/screens/mvp_route/ui/colors.dart';
 
 abstract class GoZeroTextStyles {
   static const String FONTFAMILY = "Montserrat";
@@ -8,7 +9,7 @@ abstract class GoZeroTextStyles {
   static const double DEFAULTREGULARSIZE = MULTIPLIER * 9;
   //static const double RECOMMENDEDSPACING = 0.16;
 
-  static TextStyle semibold(double fontSize, {Color color = Colors.black}) {
+  static TextStyle semibold(double fontSize, {Color color = GoZeroColors.defaultText}) {
     return TextStyle(
         color: color,
         fontFamily: FONTFAMILY,
@@ -17,7 +18,7 @@ abstract class GoZeroTextStyles {
   }
 
   static TextStyle bold(
-      {Color color = Colors.black, double fontSize = DEFAULTBOLDSIZE}) {
+      {Color color = GoZeroColors.defaultText, double fontSize = DEFAULTBOLDSIZE}) {
     return TextStyle(
         color: color,
         fontFamily: FONTFAMILY,
@@ -26,7 +27,7 @@ abstract class GoZeroTextStyles {
   }
 
   static TextStyle regular(double fontSize,
-      {Color color = Colors.black,
+      {Color color = GoZeroColors.defaultText,
       double letterSpacingFactor = 0,
       bool italic = false}) {
     return TextStyle(
@@ -39,7 +40,7 @@ abstract class GoZeroTextStyles {
   }
 
   static TextStyle medium(double fontSize,
-      {Color color = Colors.black, double letterSpacingFactor = 0}) {
+      {Color color = GoZeroColors.defaultText, double letterSpacingFactor = 0}) {
     return TextStyle(
       color: color,
       fontFamily: FONTFAMILY,
