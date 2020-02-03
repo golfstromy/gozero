@@ -1,3 +1,4 @@
+- bei allen getScreenWidths nochmal prüfen, ob es wirklich um Breite geht und ob Faktor stimmen kann...
 - GeneralScreen.dart schreiben, in dem bereits Stack mit Press Anywhere Label, progress indicator (und GestureDetecto?)r drin sind. 
     Also einfach nur noch genereralScreen(int index, List<Widget> elements) aufrufen, wobei elements children von Stack sind
 - custom Widgets direkt als Klasse schreiben
