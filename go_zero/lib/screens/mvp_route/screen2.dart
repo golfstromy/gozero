@@ -10,7 +10,7 @@ import 'ui/widgets/globe_bulletpoint.dart';
 const double _GAPMULTIPLIER = 2.3;
 const double _BULLETPOINTFONTSIZE = 14;
 const double _TITLEFONTSIZE = 17;
-const int index = 0;
+const int INDEX = 0;
 
 class ChallengeScreen extends StatelessWidget {
   @override
@@ -24,7 +24,7 @@ class ChallengeScreen extends StatelessWidget {
         ),
         Align(
           alignment: Alignment.topLeft,
-          child: progressbar(index, context),
+          child: progressbar(INDEX, context),
         ),
         Column(
           children: <Widget>[

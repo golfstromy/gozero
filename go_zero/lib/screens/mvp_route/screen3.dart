@@ -10,7 +10,7 @@ import 'ui/widgets/pressAnywhereLabel.dart';
 import 'ui/widgets/progressbar.dart';
 
 const double HEADLINEFONTSIZE = 18;
-const int index = 1;
+const int INDEX = 1;
 
 class HowItWorksScreen extends StatelessWidget {
   @override
@@ -27,7 +27,7 @@ class HowItWorksScreen extends StatelessWidget {
                 ),
                 Align(
                   alignment: Alignment.topLeft,
-                  child: progressbar(index, context),
+                  child: progressbar(INDEX, context),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
