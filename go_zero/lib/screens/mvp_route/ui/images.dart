@@ -9,8 +9,13 @@ const String OFFSETFOOTPRINT = "assets/offsetFootprint.png";
 const String SHARE = "assets/share.png";
 
 const String GLOBEICON = "assets/icons/globe4x.png";
+const String MALEICON = "assets/icons/male4x.png";
+const String FEMALEICON = "assets/icons/female4x.png";
 
 abstract class GoZeroIcons {
   static final Widget globe = Image.asset(GLOBEICON, width: 16, height: 16);
+  static final Widget male =
+      Image.asset(MALEICON, scale: 0.25, fit: BoxFit.fitHeight);
+  static final Widget female =
+      Image.asset(FEMALEICON, scale: 0.25, fit: BoxFit.fitHeight);
 }
-
