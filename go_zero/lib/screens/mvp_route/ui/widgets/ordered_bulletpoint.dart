@@ -58,7 +58,8 @@ Widget singleStep(BuildContext context, int numToPrint, String text,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            //TODO: FIX ALIGNMENT --> width: ...,
+            alignment: Alignment.centerLeft,
+            width: 0.059 * getScreenWidth(context),
             child: RichText(
                 text: TextSpan(children: <TextSpan>[
               TextSpan(
