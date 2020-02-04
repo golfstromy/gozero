@@ -5,6 +5,16 @@ import '../screensize.dart';
 import '../textstyle.dart';
 
 const double _TEXTSIZE = 14;
+Widget _ICON = GoZeroIcons.globe;
+
+List<Widget> generateBulletpoints(
+    BuildContext context, List<List<TextSpan>> contents) {
+  List<Widget> bulletpoints = [];
+  for (List<TextSpan> content in contents) {
+    bulletpoints.add(bulletPoint(context, content));
+  }
+  return bulletpoints;
+}
 
 Widget bulletPoint(BuildContext context, List<TextSpan> infotext) {
   return Padding(
@@ -14,7 +24,7 @@ Widget bulletPoint(BuildContext context, List<TextSpan> infotext) {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          GoZeroIcons.globe,
+          _ICON,
           Padding(
               padding: EdgeInsets.only(left: 0.017 * getScreenWidth(context)),
               child: RichText(

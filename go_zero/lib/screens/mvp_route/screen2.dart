@@ -46,99 +46,85 @@ class ChallengeScreen extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(top: 0.1 * getScreenHeight(context)),
                   child: Column(
-                    children: <Widget>[
-                      bulletPoint(
-                        context,
-                        [
-                          TextSpan(
-                              text: "Flooding",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                          TextSpan(
-                              text:
-                                  " of coastal areas due to a sea level \nrise of 50 cm")
-                        ],
-                      ),
-                      bulletPoint(
-                        context,
-                        [
-                          TextSpan(
-                              text: "Armed conflicts",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                          TextSpan(
-                              text:
-                                  " are likely to be about 40% \nmore probable")
-                        ],
-                      ),
-                      bulletPoint(
-                        context,
-                        [
-                          TextSpan(text: "Irreversible"),
-                          TextSpan(
-                              text: " melting of ice",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                        ],
-                      ),
-                      bulletPoint(
-                        context,
-                        [
-                          TextSpan(text: "20% to 40% of the"),
-                          TextSpan(
-                              text: " Amazonas",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                          TextSpan(text: " will be \n"),
-                          TextSpan(
-                              text: "destroyed",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                        ],
-                      ),
-                      bulletPoint(
-                        context,
-                        [
-                          TextSpan(text: "Water shortages periods of"),
-                          TextSpan(
-                              text: " drought",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                          TextSpan(text: " and \ncrop failures"),
-                        ],
-                      ),
-                      bulletPoint(
-                        context,
-                        [
-                          TextSpan(
-                              text:
-                                  "Irreversible damage to 99% of corals due to \n"),
-                          TextSpan(
-                              text: " warming of the oceans",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                        ],
-                      ),
-                      bulletPoint(
-                        context,
-                        [
-                          TextSpan(text: "Half of all"),
-                          TextSpan(
-                              text: " animal",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                          TextSpan(text: " & 60% of all "),
-                          TextSpan(
-                              text: "plant",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                          TextSpan(text: " species\nwill be threatened with "),
-                          TextSpan(
-                              text: "extinction",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                        ],
-                      ),
-                      bulletPoint(
-                        context,
-                        [
-                          TextSpan(text: "Global"),
-                          TextSpan(
-                              text: " economic downturn",
-                              style: GoZeroTextStyles.semibold(_BULLETPOINTFONTSIZE)),
-                        ],
-                      ),
-                    ],
+                    children: generateBulletpoints(context, [
+                      [
+                        TextSpan(
+                            text: "Flooding",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                        TextSpan(
+                            text:
+                                " of coastal areas due to a sea level \nrise of 50 cm")
+                      ],
+                      [
+                        TextSpan(
+                            text: "Armed conflicts",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                        TextSpan(
+                            text: " are likely to be about 40% \nmore probable")
+                      ],
+                      [
+                        TextSpan(text: "Irreversible"),
+                        TextSpan(
+                            text: " melting of ice",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                      ],
+                      [
+                        TextSpan(text: "20% to 40% of the"),
+                        TextSpan(
+                            text: " Amazonas",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                        TextSpan(text: " will be \n"),
+                        TextSpan(
+                            text: "destroyed",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                      ],
+                      [
+                        TextSpan(text: "Water shortages periods of"),
+                        TextSpan(
+                            text: " drought",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                        TextSpan(text: " and \ncrop failures"),
+                      ],
+                      [
+                        TextSpan(
+                            text:
+                                "Irreversible damage to 99% of corals due to \n"),
+                        TextSpan(
+                            text: " warming of the oceans",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                      ],
+                      [
+                        TextSpan(text: "Half of all"),
+                        TextSpan(
+                            text: " animal",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                        TextSpan(text: " & 60% of all "),
+                        TextSpan(
+                            text: "plant",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                        TextSpan(text: " species\nwill be threatened with "),
+                        TextSpan(
+                            text: "extinction",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                      ],
+                      [
+                        TextSpan(text: "Global"),
+                        TextSpan(
+                            text: " economic downturn",
+                            style: GoZeroTextStyles.semibold(
+                                _BULLETPOINTFONTSIZE)),
+                      ]
+                    ]),
                   ),
                 )),
           ],
