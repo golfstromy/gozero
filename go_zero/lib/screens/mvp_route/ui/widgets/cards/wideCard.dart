@@ -12,10 +12,15 @@ class WideSelectionCard extends StatefulWidget {
   final String text;
   final Widget image;
   final bool textSelectable;
+  bool selected = false;
 
-  const WideSelectionCard(
-      {Key key, this.text, this.image, this.textSelectable = true})
-      : super(key: key);
+  WideSelectionCard({
+    Key key,
+    @required this.text,
+    @required this.image,
+    this.selected,
+    this.textSelectable = true,
+  }) : super(key: key);
 
   @override
   _WideSelectionCardState createState() => _WideSelectionCardState();
@@ -25,13 +30,16 @@ class _WideSelectionCardState extends State<WideSelectionCard> {
   @override
   Widget build(BuildContext context) {
     return widget.textSelectable
-        ? TextSelectableCustomCard(widget.text, _WIDECARDFONTSIZE , image: widget.image, 
+        ? TextSelectableCustomCard(
+            widget.text, _WIDECARDFONTSIZE, image: widget.image,
+            selected: widget.selected,
             //  height: Cards.DEFAULTCARDHEIGHTFACTOR * getScreenHeight(context),
             width: 0.768 * getScreenWidth(context),
           )
         : CustomCard(
             //  height: Cards.DEFAULTCARDHEIGHTFACTOR * getScreenHeight(context),
             width: 0.768 * getScreenWidth(context),
+            selected: widget.selected,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
