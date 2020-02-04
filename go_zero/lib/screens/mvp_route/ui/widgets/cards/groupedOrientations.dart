@@ -1,0 +1,4 @@
+enum GroupedCardOrientation{
+  HORIZONTAL,
+  VERTICAL,
+}
