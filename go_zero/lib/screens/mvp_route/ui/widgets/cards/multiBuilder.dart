@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'customCard.dart';
-import 'deactivateOtherCards.dart';
 import 'wideCard.dart';
 
 const double _GAPBETWEENCARDSFACTOR = 16 / 667;
