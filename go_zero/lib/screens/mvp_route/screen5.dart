@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_zero/screens/mvp_route/ui/screensize.dart';
 import 'package:go_zero/screens/mvp_route/ui/textstyle.dart';
+import 'package:go_zero/screens/mvp_route/ui/widgets/cards/groupedSelectableCards.dart';
 
 import 'ui/colors.dart';
 import 'ui/images.dart';
@@ -60,15 +61,14 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                           child: subHeadline(context, Icons.person, "Gender")),
                       Padding(
                           padding: EdgeInsets.only(
-                              top: 0.035 * getScreenHeight(context)),
-                          child: WideSelectionCard(
-                              text: "Female", image: GoZeroIcons.female)),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              top: _GAPBETWEENCARDSFACTOR *
-                                  getScreenHeight(context)),
-                          child: WideSelectionCard(
-                              text: "Male", image: GoZeroIcons.male)),
+                              top: 0.035 * getScreenHeight(context),
+                              left: 0.12 * getScreenWidth(context)),
+                          child: SelectableWideCardGroup(
+                              innerSpacing: EdgeInsets.only(
+                                  top: _GAPBETWEENCARDSFACTOR *
+                                      getScreenHeight(context)),
+                              texts: ["Female", "Male"],
+                              images: [GoZeroIcons.female, GoZeroIcons.male])),
                       Padding(
                           padding: EdgeInsets.only(
                               top: 0.045 * getScreenHeight(context),
@@ -89,7 +89,10 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            SmallestCard(text: weight.toString(), selectable: false,),
+                            SmallestCard(
+                              child: Center(child: Text(weight.toString())),
+                              selectable: false,
+                            ),
                             Slider(
                               min: _WEIGHTSLIDERMIN,
                               max: _WEIGHTSLIDERMAX,
