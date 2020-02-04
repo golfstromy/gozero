@@ -8,8 +8,17 @@ class CustomCard extends StatefulWidget {
   final double width;
   final double height;
   final Widget child;
+  bool selected = false;
 
-  const CustomCard({Key key, this.width, this.height, this.child})
+  bool getSelected() {
+    return selected;
+  }
+
+  void setSelected(bool val) {
+    selected = val;
+  }
+
+  CustomCard({Key key, this.width, this.height, this.selected, this.child})
       : super(key: key);
 
   @override
@@ -17,14 +26,12 @@ class CustomCard extends StatefulWidget {
 }
 
 class CustomCardState extends State<CustomCard> {
-  bool selected = false;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
         setState(() {
-          selected = !selected;
+          widget.selected = !widget.selected;
         });
       },
       child: Container(
@@ -33,8 +40,9 @@ class CustomCardState extends State<CustomCard> {
         child: Card(
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                  color:
-                      selected ? GoZeroColors.green : GoZeroColors.controlGrey),
+                  color: widget.selected
+                      ? GoZeroColors.green
+                      : GoZeroColors.controlGrey),
               borderRadius: BorderRadius.circular(15.0),
             ),
             color: GoZeroColors.controlBackground,
@@ -136,10 +144,17 @@ class TextSelectableCustomCard extends StatefulWidget {
   final String text;
   final Widget image;
   final double fontSize;
+  bool selected = false;
 
-  const TextSelectableCustomCard(this.text, this.fontSize,
-      {Key key, this.width, this.height, this.image})
-      : super(key: key);
+  TextSelectableCustomCard(
+    this.text,
+    this.fontSize, {
+    Key key,
+    this.width,
+    this.height,
+    this.image,
+    this.selected,
+  }) : super(key: key);
 
   @override
   TextSelectableCustomCardState createState() =>
@@ -147,14 +162,13 @@ class TextSelectableCustomCard extends StatefulWidget {
 }
 
 class TextSelectableCustomCardState extends State<TextSelectableCustomCard> {
-  bool selected = false;
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
           setState(() {
-            selected = !selected;
+            print("Previous setting for ${widget.text}: " + widget.selected.toString());
+            widget.selected = !widget.selected;
           });
         },
         child: Container(
@@ -163,8 +177,9 @@ class TextSelectableCustomCardState extends State<TextSelectableCustomCard> {
           child: Card(
             shape: RoundedRectangleBorder(
               side: BorderSide(
-                  color:
-                      selected ? GoZeroColors.green : GoZeroColors.controlGrey),
+                  color: widget.selected
+                      ? GoZeroColors.green
+                      : GoZeroColors.controlGrey),
               borderRadius: BorderRadius.circular(15.0),
             ),
             color: GoZeroColors.controlBackground,
@@ -176,7 +191,9 @@ class TextSelectableCustomCardState extends State<TextSelectableCustomCard> {
                   trailing: widget.image != null ? widget.image : Container(),
                   title: Text(widget.text,
                       style: GoZeroTextStyles.regular(widget.fontSize,
-                          color: selected ? GoZeroColors.green : GoZeroColors.defaultText)),
+                          color: widget.selected
+                              ? GoZeroColors.green
+                              : GoZeroColors.defaultText)),
                 ),
               ],
             ),
