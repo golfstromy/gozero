@@ -9,6 +9,7 @@ const double _SMALLESTCARDFONTSIZE = 14;
 
 class SmallestCard extends StatefulWidget {
   final bool selectable;
+  final bool setHeight;
   final bool textSelectable;
   final String text;
   final Widget child;
@@ -16,6 +17,7 @@ class SmallestCard extends StatefulWidget {
       {Key key,
       this.selectable = true,
       this.text,
+      this.setHeight = true,
       this.child,
       this.textSelectable = false})
       : super(key: key);
@@ -28,7 +30,7 @@ class _SmallestCardState extends State<SmallestCard> {
   @override
   Widget build(BuildContext context) {
     double _WIDTH = 0.208 * getScreenWidth(context);
-    double _HEIGHT = Cards.DEFAULTCARDHEIGHTFACTOR * getScreenHeight(context);
+    double _HEIGHT = widget.setHeight? Cards.DEFAULTCARDHEIGHTFACTOR * getScreenHeight(context) : null;
 
     return widget.selectable
         ? widget.textSelectable
