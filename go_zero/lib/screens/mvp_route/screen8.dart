@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_zero/screens/mvp_route/ui/screensize.dart';
 import 'package:go_zero/screens/mvp_route/ui/textstyle.dart';
+import 'package:go_zero/screens/mvp_route/ui/widgets/circleCaption.dart';
 import 'package:go_zero/screens/mvp_route/ui/widgets/pressAnywhereLabel.dart';
 
 import 'ui/colors.dart';
@@ -20,7 +21,7 @@ double _avgWorld = 4.8;
 
 const double _YHEIGHTFACTORBIGCIRCLE = 0.389;
 const String NEXTSCREEN = "/screen9";
-const double _SMALLTEXTFONTSIZE = 16;
+
 
 class _FootPrintResultScreenState extends State<FootPrintResultScreen> {
   @override
@@ -35,9 +36,9 @@ class _FootPrintResultScreenState extends State<FootPrintResultScreen> {
                 Container(color: GoZeroColors.background),
                 Headline("YOUR FOOTPRINT"),
                 Align(
-                    alignment: Alignment.topCenter,
+                    alignment: Alignment.topLeft,
                     child: Padding(
-                        padding: EdgeInsets.only(
+                        padding: EdgeInsets.only(//TODO: Abstand nach links einfügen
                             top: _YHEIGHTFACTORBIGCIRCLE *
                                 getScreenHeight(context)),
                         child: ColorfulCircle(_number,
@@ -52,27 +53,8 @@ class _FootPrintResultScreenState extends State<FootPrintResultScreen> {
                               Icons.home,
                               Icons.person_outline
                             ]))),
-                Column(
-                  children: <Widget>[
-                    SmallCircle(number: _avgGermany, unit: "t/year"),
-                    Padding(
-                        padding: EdgeInsets.only(top: 5),
-                        child: Text("Average in Germany",
-                            style:
-                                GoZeroTextStyles.regular(_SMALLTEXTFONTSIZE)))
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    SmallCircle(number: _avgWorld, unit: "t/year"),
-                    Padding(
-                        padding: EdgeInsets.only(top: 5),
-                        child: Text(
-                          "Average in Germany",
-                          style: GoZeroTextStyles.regular(_SMALLTEXTFONTSIZE),
-                        ))
-                  ],
-                ),
+                SmallCircleWithCaption(_avgGermany, unit: "t/year", caption: "Average in Germany"),
+                SmallCircleWithCaption(_avgWorld, unit: "t/year", caption: "Average in world"),
                 pressAnywhere(context)
               ],
             )));
