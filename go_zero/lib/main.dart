@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
+import 'package:http/http.dart' as http;
 
 
 import 'screens/mvp_route/screen1.dart';
@@ -38,7 +38,6 @@ class GoZeroApp extends StatelessWidget {
         '/screen8': (context) => FootPrintResultScreen(),
         '/screen9': (context) => OffsetIntroScreen(),
         '/screen12': (context) => ShareIntroScreen(),
-        
         '/finish': (context) => InitScreen()
       },
     );
