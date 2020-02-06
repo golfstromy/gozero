@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_zero/screens/mvp_route/ui/screensize.dart';
 import 'package:go_zero/screens/mvp_route/ui/textstyle.dart';
 import 'package:go_zero/screens/mvp_route/ui/widgets/cards/groupedSelectableCards.dart';
@@ -27,8 +28,11 @@ const double _GAPBETWEENCARDSFACTOR = 16 / 667;
 const double _WEIGHTSLIDERMIN = 1;
 const double _WEIGHTSLIDERMAX = 200;
 const double _WEIGHTINITVALUE = 80;
+const double _WEIGHTFONTSIZE = 14;
 
-const double _WEIGHTTEXTMARGINFCT = 27 / 375; //MARGIN:SCREENWIDTH px in Mockup
+const double _WEIGHTTEXTMARGINFCT = 27 /
+    375 /
+    1.2; //MARGIN:SCREENWIDTH px in Mockup, durch 1,2 damit mehr Platz für dreistellige Zahlen ist
 
 double _dWeight = _WEIGHTINITVALUE;
 TextEditingController _weightController = TextEditingController();
@@ -104,28 +108,35 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             SmallestCard(
+                              setHeight: false,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  Container( //TODO: Fix alignment
+                                  Container(
                                     margin: EdgeInsets.only(
-                                        left: _WEIGHTTEXTMARGINFCT,
-                                        right: _WEIGHTTEXTMARGINFCT),
+                                        left: _WEIGHTTEXTMARGINFCT *
+                                            getScreenWidth(context),
+                                        right: _WEIGHTTEXTMARGINFCT *
+                                            getScreenWidth(context)),
                                     child: TextField(
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(3),
+                                      ],
+                                      style: GoZeroTextStyles.regular(
+                                          _WEIGHTFONTSIZE,
+                                          color: GoZeroColors.green),
                                       decoration: InputDecoration(
                                           border: InputBorder.none),
                                       controller: _weightController,
                                       keyboardType: TextInputType.number,
                                       onChanged: (newVal) {
                                         setState(() {
-                                          print("Hi!");
                                           _dWeight = int.parse(newVal) <=
                                                   _WEIGHTSLIDERMAX
                                               ? int.parse(newVal).toDouble()
                                               : _WEIGHTSLIDERMAX;
-                                          print(_dWeight);
                                         });
                                       },
                                     ),
