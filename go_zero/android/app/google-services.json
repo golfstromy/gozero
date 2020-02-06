@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "299161901929",
+    "firebase_url": "https://zero-ffb3c.firebaseio.com",
+    "project_id": "zero-ffb3c",
+    "storage_bucket": "zero-ffb3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299161901929:android:86f52cc1c64ca495da7bf8",
+        "android_client_info": {
+          "package_name": "io.zero.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299161901929-npcd0lgsjqt09o6ibq4tof5i4nrcisl0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeV70WMK1poaezbc9bGRwno5JJ1Ia2uJY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299161901929-npcd0lgsjqt09o6ibq4tof5i4nrcisl0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
