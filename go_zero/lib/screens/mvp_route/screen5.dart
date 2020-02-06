@@ -12,6 +12,8 @@ import 'ui/widgets/inputs.dart';
 import 'ui/widgets/pressAnywhereLabel.dart';
 import 'ui/widgets/progressbar.dart';
 
+const String NEXTSCREEN = "/screen8"; //TODO: Fixen nach Entwurf von Screen6
+
 class MyPersonScreen extends StatefulWidget {
   @override
   _MyPersonScreenState createState() => _MyPersonScreenState();
@@ -24,15 +26,27 @@ const double _GAPBETWEENCARDSFACTOR = 16 / 667;
 
 const double _WEIGHTSLIDERMIN = 1;
 const double _WEIGHTSLIDERMAX = 200;
+const double _WEIGHTINITVALUE = 80;
 
-int weight = _WEIGHTSLIDERMIN.round();
-double _dWeight = _WEIGHTSLIDERMIN;
+const double _WEIGHTTEXTMARGINFCT = 27 / 375; //MARGIN:SCREENWIDTH px in Mockup
+
+double _dWeight = _WEIGHTINITVALUE;
+TextEditingController _weightController = TextEditingController();
 
 class _MyPersonScreenState extends State<MyPersonScreen> {
   @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _weightController.text = _WEIGHTINITVALUE.round().toString();
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Stack(
+        body: SingleChildScrollView(
+            child: Stack(
       children: <Widget>[
         Container(color: GoZeroColors.background),
         Align(
@@ -90,7 +104,34 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             SmallestCard(
-                              child: Center(child: Text(weight.toString())),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: <Widget>[
+                                  Container( //TODO: Fix alignment
+                                    margin: EdgeInsets.only(
+                                        left: _WEIGHTTEXTMARGINFCT,
+                                        right: _WEIGHTTEXTMARGINFCT),
+                                    child: TextField(
+                                      decoration: InputDecoration(
+                                          border: InputBorder.none),
+                                      controller: _weightController,
+                                      keyboardType: TextInputType.number,
+                                      onChanged: (newVal) {
+                                        setState(() {
+                                          print("Hi!");
+                                          _dWeight = int.parse(newVal) <=
+                                                  _WEIGHTSLIDERMAX
+                                              ? int.parse(newVal).toDouble()
+                                              : _WEIGHTSLIDERMAX;
+                                          print(_dWeight);
+                                        });
+                                      },
+                                    ),
+                                  )
+                                ],
+                              ),
                               selectable: false,
                             ),
                             Slider(
@@ -99,7 +140,8 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                               onChanged: (value) {
                                 setState(() {
                                   _dWeight = value;
-                                  weight = value.round();
+                                  _weightController.text =
+                                      value.round().toString();
                                 });
                               },
                               value: _dWeight,
@@ -110,8 +152,15 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                     ],
                   ),
                 ))),
+        FlatButton(
+          //TODO: Ästhethisch gestalten & positionieren
+          child: Text("CONTINUE"),
+          onPressed: () {
+            Navigator.pushNamed(context, NEXTSCREEN);
+          },
+        ),
         pressAnywhere(context)
       ],
-    ));
+    )));
   }
 }
