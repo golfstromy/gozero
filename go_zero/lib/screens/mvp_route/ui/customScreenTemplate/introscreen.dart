@@ -29,7 +29,7 @@ Scaffold introscreen(BuildContext context, int stepNum, String imagepath,
               Padding(
                   padding:
                       EdgeInsets.only(top: 0.217 * getScreenHeight(context)),
-                  child: bigCircle(child: Image.asset(imagepath)))
+                  child: bigCircle(context, child: Image.asset(imagepath)))
             ],
           ),
         ),
@@ -41,8 +41,8 @@ Scaffold introscreen(BuildContext context, int stepNum, String imagepath,
                 //child:
                 Padding(
                     padding: EdgeInsets.only(
-                        top: 0.6912 * getScreenHeight(context),
-                        ),
+                      top: 0.6912 * getScreenHeight(context),
+                    ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
