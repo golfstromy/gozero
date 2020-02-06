@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_zero/screens/mvp_route/ui/widgets/cards/wideCard.dart';
 
+import '../../screensize.dart';
+import 'customCard.dart';
 import 'groupedOrientations.dart';
+
+const double _WIDECARDFONTSIZE = 14;
 
 class SelectableWideCardGroup extends StatefulWidget {
   ///Texts in the Card
@@ -26,13 +30,14 @@ class SelectableWideCardGroup extends StatefulWidget {
   final GroupedCardOrientation orientation;
 
   /// Called when needed to build a SelectableWideCardGroup element.
-  final Widget Function(WideSelectionCard card, int index) itemBuilder;
+  final Widget Function(TextSelectableCustomCard card, int index) itemBuilder;
 
   /// If true the Card's value can be true, false, or null.
   final bool tristate;
 
   //SPACING STUFF
   final EdgeInsetsGeometry innerSpacing;
+
   /// Empty space in which to inset the SelectableWideCardGroup.
   final EdgeInsetsGeometry padding;
 
@@ -62,6 +67,7 @@ class SelectableWideCardGroup extends StatefulWidget {
 
 class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
   List<String> _selected = [];
+  double _SCREENWIDTH;
 
   @override
   void initState() {
@@ -74,6 +80,7 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
   @override
   Widget build(BuildContext context) {
     //set the selected to the checked (if not null)
+    _SCREENWIDTH = getScreenWidth(context);
     if (widget.checked != null) {
       _selected = [];
       _selected.addAll(widget.checked); //use add all to prevent a shallow copy
@@ -82,13 +89,19 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
     List<Widget> content = [];
 
     for (int i = 0; i < widget.texts.length; i++) {
-      WideSelectionCard card = WideSelectionCard(
+      TextSelectableCustomCard card = TextSelectableCustomCard(
+        widget.texts[i],
+        _WIDECARDFONTSIZE,
+        width: 0.768 * _SCREENWIDTH,
+        onChanged: (bool selected) {
+          onChanged(selected, i);
+          
+        },
         selected: _selected.contains(widget.texts.elementAt(i)),
         image: widget.images[i],
-        text: widget.texts[i],
       );
 
-      //use user defined method to build
+      //use user defined method to build if it was defined
       if (widget.itemBuilder != null)
         content.add(widget.itemBuilder(card, i));
       else {
@@ -96,13 +109,17 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
         //vertical orientation means Column with Row inside
         if (widget.orientation == GroupedCardOrientation.VERTICAL) {
           content.add(Row(children: <Widget>[
-            Padding(padding: widget.innerSpacing,), //TODO: ABSTAND ERSETZEN
+            Padding(
+              padding: widget.innerSpacing,
+            ), //TODO: ABSTAND ERSETZEN
             card,
           ]));
         } else {
           //horizontal orientation means Row with Column inside
           content.add(Column(children: <Widget>[
-             Padding(padding: widget.innerSpacing,), //TODO: ABSTAND ERSETZEN
+            Padding(
+              padding: widget.innerSpacing,
+            ), //TODO: ABSTAND ERSETZEN
             card,
           ]));
         }
@@ -120,9 +137,10 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
 
   void onChanged(bool isChecked, int i) {
     bool isAlreadyContained = _selected.contains(widget.texts.elementAt(i));
-
+    
     if (mounted) {
       setState(() {
+        _selected.clear();
         if (!isChecked && isAlreadyContained) {
           _selected.remove(widget.texts.elementAt(i));
         } else if (isChecked && !isAlreadyContained) {

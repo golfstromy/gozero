@@ -142,6 +142,7 @@ class TextSelectableCustomCard extends StatefulWidget {
   final double width;
   final double height;
   final String text;
+  final ValueChanged<bool> onChanged;
   final Widget image;
   final double fontSize;
   bool selected = false;
@@ -153,6 +154,7 @@ class TextSelectableCustomCard extends StatefulWidget {
     this.width,
     this.height,
     this.image,
+    this.onChanged,
     this.selected,
   }) : super(key: key);
 
@@ -170,6 +172,7 @@ class TextSelectableCustomCardState extends State<TextSelectableCustomCard> {
             print("Previous setting for ${widget.text}: " +
                 widget.selected.toString());
             widget.selected = !widget.selected;
+            widget.onChanged(widget.selected);
           });
         },
         child: Container(
