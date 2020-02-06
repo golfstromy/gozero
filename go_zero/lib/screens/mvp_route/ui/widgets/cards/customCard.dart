@@ -167,7 +167,8 @@ class TextSelectableCustomCardState extends State<TextSelectableCustomCard> {
     return GestureDetector(
         onTap: () {
           setState(() {
-            print("Previous setting for ${widget.text}: " + widget.selected.toString());
+            print("Previous setting for ${widget.text}: " +
+                widget.selected.toString());
             widget.selected = !widget.selected;
           });
         },
