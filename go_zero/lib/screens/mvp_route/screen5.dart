@@ -8,7 +8,6 @@ import 'ui/colors.dart';
 import 'ui/images.dart';
 
 import 'ui/widgets/cards/smallestCard.dart';
-import 'ui/widgets/cards/wideCard.dart';
 import 'ui/widgets/inputs.dart';
 import 'ui/widgets/pressAnywhereLabel.dart';
 import 'ui/widgets/progressbar.dart';
