@@ -24,7 +24,7 @@ Widget bigCircle(BuildContext context,
 
 const double _LOGOTEXTSIZE = 24;
 Widget circleWithText(BuildContext context, String blacktext, String greenText,
-    {bool blackFullStop = true,
+    {String punctuationMark = ".",
     double sizeFactor = DEFAULTWIDTHFACTOR,
     double thickness = 2}) {
   return bigCircle(context,
@@ -40,7 +40,7 @@ Widget circleWithText(BuildContext context, String blacktext, String greenText,
                   text: greenText,
                   style: GoZeroTextStyles.semibold(_LOGOTEXTSIZE,
                       color: GoZeroColors.green)),
-              TextSpan(text: blackFullStop ? "." : ""),
+              TextSpan(text: punctuationMark),
             ],
           )));
 }
