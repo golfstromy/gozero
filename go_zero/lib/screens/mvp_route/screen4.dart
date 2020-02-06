@@ -4,11 +4,12 @@ import 'ui/customScreenTemplate/introscreen.dart';
 import 'ui/images.dart';
 
 const int INDEX = 2;
+const String NEXTSCREEN = "/screen5";
 
 class CalculateIntroScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return introscreen(context, 1, CALCULATEFOOTPRINT,
-        "Calculate your\npersonal CO2 footprint", INDEX, "/screen5");
+        "Calculate your\npersonal CO2 footprint", INDEX, NEXTSCREEN);
   }
 }

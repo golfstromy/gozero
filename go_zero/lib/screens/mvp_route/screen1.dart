@@ -7,13 +7,15 @@ import 'ui/screensize.dart';
 import 'ui/widgets/circle.dart';
 import 'ui/widgets/logo.dart';
 
+const String NEXTSCREEN = "/screen2";
+
 class InitScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, "/screen2");
+        Navigator.pushNamed(context, NEXTSCREEN);
         HapticFeedback.lightImpact(); //TODO: Testen
       },
       child: Stack(
@@ -22,7 +24,7 @@ class InitScreen extends StatelessWidget {
           Container(
               child: Align(
                   alignment: Alignment.center,
-                  child: circleWithText("Show our planet\nsome ", "love"))),
+                  child: circleWithText(context,"Show our planet\nsome ", "love"))),
           Positioned(
             top: 0.2354 * getScreenHeight(context),
             right: 1.5 * SMALLGAP(context),

@@ -11,6 +11,7 @@ import 'ui/widgets/progressbar.dart';
 
 const double HEADLINEFONTSIZE = 18;
 const int INDEX = 1;
+const String NEXTSCREEN = "/screen4";
 
 class HowItWorksScreen extends StatelessWidget {
   @override
@@ -18,7 +19,7 @@ class HowItWorksScreen extends StatelessWidget {
     return Scaffold(
         body: GestureDetector(
             onTap: () {
-              Navigator.pushNamed(context, "/screen4");
+              Navigator.pushNamed(context, NEXTSCREEN);
             },
             child: Stack(
               children: <Widget>[
@@ -37,7 +38,8 @@ class HowItWorksScreen extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(
                               top: 0.129 * getScreenHeight(context)),
-                          child: circleWithText("The time to act\nis ", "now"),
+                          child: circleWithText(
+                              context, "The time to act\nis ", "now"),
                         )),
                     Padding(
                         padding: EdgeInsets.only(
@@ -57,7 +59,7 @@ class HowItWorksScreen extends StatelessWidget {
                         child: Padding(
                           padding: EdgeInsets.only(
                               top: 0.021 * getScreenHeight(context)),
-                          child: getStepsAsCol(context, [ 
+                          child: getStepsAsCol(context, [
                             "Get aware of your personal impact on \nclimate change by determining your \nCO2 carbon footprint",
                             "Compensate your CO2 emissions on a\nweekly, monthly or yearly basis*",
                             "*We are currently working on even better solutions, but this is an awesome thing to start with!",

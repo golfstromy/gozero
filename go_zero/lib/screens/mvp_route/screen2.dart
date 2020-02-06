@@ -11,13 +11,14 @@ const double _GAPMULTIPLIER = 2.3;
 const double _BULLETPOINTFONTSIZE = 14;
 const double _TITLEFONTSIZE = 17;
 const int INDEX = 0;
+const String NEXTSCREEN = "/screen3";
 
 class ChallengeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: GestureDetector(
-      onTap: () => Navigator.pushNamed(context, "/screen3"),
+      onTap: () => Navigator.pushNamed(context, NEXTSCREEN),
       child: Stack(children: <Widget>[
         Container(
           color: GoZeroColors.background,
