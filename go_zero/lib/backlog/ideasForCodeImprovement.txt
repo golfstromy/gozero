@@ -5,4 +5,7 @@
 - bulletpoints so wie ordered bulletpoints mit boldindex übergeben
 - mehr Constants auf private setzen, v.a. innerhalb von Screens etc.
 - auf jeden Screen Variablen mit nextScreen=... und previousScreen; Dann auf ersten index=0 und bei allen folgenden einfach index=previousScreen.index+1
-- Generalize generation of bulletpoints, z.B. map String text:String fontstyle, "Global" : "regular" // see ordered_bulletpoint
+- Generalize generation of bulletpoints, z.B. map String text:String fontstyle, "Global" : "regular" // see ordered_bulletpoint // Bessere Idee: .split(**) 
+- Bei Kleingedruckten erkennen anstatt Index angeben: string.beginswith("*") == kleingedrucktes
+
+//Henrik Ternary Operators erklären

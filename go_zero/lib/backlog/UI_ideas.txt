@@ -4,3 +4,4 @@
 - Einstellung mit Einheiten (kg/lb, €/USD usw)^
 - SwipeDetector, hochscrollen
 - Eingabe von Gewicht neben Slider
+- Statt Slider Slider.adaptive nehmen, der iOS Style generiert
