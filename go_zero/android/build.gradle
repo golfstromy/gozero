@@ -30,12 +30,3 @@ subprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
-
-android {
-    defaultConfig {
-        applicationId "io.zero.app"
-        minSdkVersion 15
-        targetSdkVersion 2
-        versionCode 1
-        versionName "1.0"
-    }
