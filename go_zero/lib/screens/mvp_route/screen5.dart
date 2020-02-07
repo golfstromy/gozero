@@ -8,7 +8,6 @@ import 'ui/colors.dart';
 import 'ui/images.dart';
 
 import 'ui/widgets/cards/smallestCard.dart';
-import 'ui/widgets/cards/wideCard.dart';
 import 'ui/widgets/inputs.dart';
 import 'ui/widgets/pressAnywhereLabel.dart';
 import 'ui/widgets/progressbar.dart';
@@ -60,117 +59,122 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
         Container(
             width: getScreenWidth(context),
             child: Align(
-                alignment: Alignment.topLeft,
-                child: Center(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Padding(
-                          padding: EdgeInsets.only(
-                              top: 0.087 * getScreenHeight(context)),
-                          child: Text(_TITLE,
-                              style:
-                                  GoZeroTextStyles.semibold(_TITLEFONTSIZE))),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              top: 0.048 * getScreenHeight(context),
-                              left: 0.064 * getScreenWidth(context),
-                              right: 0.064 * getScreenWidth(context)),
-                          child: subHeadline(context, Icons.person, "Gender")),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              top: 0.035 * getScreenHeight(context),
-                              left: 0.12 * getScreenWidth(context)),
-                          child: SelectableWideCardGroup(
-                              innerSpacing: EdgeInsets.only(
-                                  top: _GAPBETWEENCARDSFACTOR *
-                                      getScreenHeight(context)),
-                              texts: ["Female", "Male"],
-                              images: [GoZeroIcons.female, GoZeroIcons.male])),
-                      Padding(
-                          padding: EdgeInsets.only(
-                              top: 0.045 * getScreenHeight(context),
-                              left: 0.064 * getScreenWidth(context),
-                              right: 0.064 * getScreenWidth(context)),
-                          child: subHeadline(context, Icons.person, "Age")),
-                      //TODO: INSERT AGE
-                      Padding(
-                          padding: EdgeInsets.only(
-                              top: 0.045 * getScreenHeight(context),
-                              left: 0.064 * getScreenWidth(context),
-                              right: 0.064 * getScreenWidth(context)),
-                          child: subHeadline(
-                              context, Icons.person, "Weight in kg")),
-                      Padding(
+              alignment: Alignment.topLeft,
+              child: Center(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
                         padding: EdgeInsets.only(
-                            top: 0.038 * getScreenHeight(context)),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            SmallestCard(
-                              setHeight: false,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: <Widget>[
-                                  Container(
-                                    margin: EdgeInsets.only(
-                                        left: _WEIGHTTEXTMARGINFCT *
-                                            getScreenWidth(context),
-                                        right: _WEIGHTTEXTMARGINFCT *
-                                            getScreenWidth(context)),
-                                    child: TextField(
-                                      inputFormatters: [
-                                        LengthLimitingTextInputFormatter(3),
-                                      ],
-                                      style: GoZeroTextStyles.regular(
-                                          _WEIGHTFONTSIZE,
-                                          color: GoZeroColors.green),
-                                      decoration: InputDecoration(
-                                          border: InputBorder.none),
-                                      controller: _weightController,
-                                      keyboardType: TextInputType.number,
-                                      onChanged: (newVal) {
-                                        setState(() {
-                                          _dWeight = int.parse(newVal) <=
-                                                  _WEIGHTSLIDERMAX
-                                              ? int.parse(newVal).toDouble()
-                                              : _WEIGHTSLIDERMAX;
-                                        });
-                                      },
-                                    ),
-                                  )
-                                ],
-                              ),
-                              selectable: false,
+                            top: 0.087 * getScreenHeight(context)),
+                        child: Text(_TITLE,
+                            style: GoZeroTextStyles.semibold(_TITLEFONTSIZE))),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            top: 0.048 * getScreenHeight(context),
+                            left: 0.064 * getScreenWidth(context),
+                            right: 0.064 * getScreenWidth(context)),
+                        child: subHeadline(context, Icons.person, "Gender")),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            top: 0.035 * getScreenHeight(context),
+                            left: 0.12 * getScreenWidth(context)),
+                        child: SelectableWideCardGroup(
+                            innerSpacing: EdgeInsets.only(
+                                top: _GAPBETWEENCARDSFACTOR *
+                                    getScreenHeight(context)),
+                            texts: ["Female", "Male"],
+                            images: [GoZeroIcons.female, GoZeroIcons.male])),
+                    Padding(
+                        padding: EdgeInsets.only(
+                            top: 0.045 * getScreenHeight(context),
+                            left: 0.064 * getScreenWidth(context),
+                            right: 0.064 * getScreenWidth(context)),
+                        child: subHeadline(context, Icons.person, "Age")),
+                    //TODO: INSERT AGE
+                    Padding(
+                        padding: EdgeInsets.only(
+                            top: 0.045 * getScreenHeight(context),
+                            left: 0.064 * getScreenWidth(context),
+                            right: 0.064 * getScreenWidth(context)),
+                        child:
+                            subHeadline(context, Icons.person, "Weight in kg")),
+                    Padding(
+                      padding: EdgeInsets.only(
+                          top: 0.038 * getScreenHeight(context)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          SmallestCard(
+                            setHeight: false,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                  margin: EdgeInsets.only(
+                                      left: _WEIGHTTEXTMARGINFCT *
+                                          getScreenWidth(context),
+                                      right: _WEIGHTTEXTMARGINFCT *
+                                          getScreenWidth(context)),
+                                  child: TextField(
+                                    inputFormatters: [
+                                      LengthLimitingTextInputFormatter(3),
+                                    ],
+                                    style: GoZeroTextStyles.regular(
+                                        _WEIGHTFONTSIZE,
+                                        color: GoZeroColors.green),
+                                    decoration: InputDecoration(
+                                        border: InputBorder.none),
+                                    controller: _weightController,
+                                    keyboardType: TextInputType.number,
+                                    onChanged: (newVal) {
+                                      setState(() {
+                                        _dWeight = int.parse(newVal) <=
+                                                _WEIGHTSLIDERMAX
+                                            ? int.parse(newVal).toDouble()
+                                            : _WEIGHTSLIDERMAX;
+                                      });
+                                    },
+                                  ),
+                                )
+                              ],
                             ),
-                            Slider(
-                              min: _WEIGHTSLIDERMIN,
-                              max: _WEIGHTSLIDERMAX,
-                              onChanged: (value) {
-                                setState(() {
-                                  _dWeight = value;
-                                  _weightController.text =
-                                      value.round().toString();
-                                });
-                              },
-                              value: _dWeight,
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ))),
-        FlatButton(
-          //TODO: Ästhethisch gestalten & positionieren
-          child: Text("CONTINUE"),
-          onPressed: () {
-            Navigator.pushNamed(context, NEXTSCREEN);
-          },
-        ),
-        pressAnywhere(context)
+                            selectable: false,
+                          ),
+                          Slider(
+                            min: _WEIGHTSLIDERMIN,
+                            max: _WEIGHTSLIDERMAX,
+                            onChanged: (value) {
+                              setState(() {
+                                _dWeight = value;
+                                _weightController.text =
+                                    value.round().toString();
+                              });
+                            },
+                            value: _dWeight,
+                          )
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            )),
+        pressAnywhere(context),
+        Align(
+          alignment: Alignment.bottomCenter,
+          child: Padding(
+              padding: EdgeInsets.only(bottom: 50),
+              child: FlatButton(
+                //TODO: Ästhethisch gestalten & positionieren
+                child: Text("CONTINUE"),
+                onPressed: () {
+                  Navigator.pushNamed(context, NEXTSCREEN);
+                },
+              )),
+        )
       ],
     )));
   }
