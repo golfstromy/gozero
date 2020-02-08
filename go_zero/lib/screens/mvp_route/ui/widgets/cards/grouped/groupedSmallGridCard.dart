@@ -11,6 +11,8 @@ class SelectableSmallCardGrid extends StatefulWidget {
   ///how big the cards width is
   final double cardWidthFactor;
 
+  final double cardHeightFactor;
+
   ///how many cols the grid has
   final int columns;
 
@@ -55,6 +57,7 @@ class SelectableSmallCardGrid extends StatefulWidget {
     this.fontSize = 14,
     this.checked,
     this.onChange,
+    this.cardHeightFactor = 1.5 * 0.068,
     this.crossAxisCount = 2,
     this.cardWidthFactor =
         137 / 375, //Mockupwidth of small card:mockup screen width
@@ -76,7 +79,7 @@ class SelectableSmallCardGrid extends StatefulWidget {
 class _SelectableSmallCardGridState extends State<SelectableSmallCardGrid> {
   List<String> _selected = [];
   double _SCREENWIDTH;
-
+  double _SCREENHEIGHT;
   @override
   void initState() {
     super.initState();
@@ -89,6 +92,7 @@ class _SelectableSmallCardGridState extends State<SelectableSmallCardGrid> {
   Widget build(BuildContext context) {
     //set the selected to the checked (if not null)
     _SCREENWIDTH = getScreenWidth(context);
+    _SCREENHEIGHT = getScreenHeight(context);
     if (widget.checked != null) {
       _selected = [];
       _selected.addAll(widget.checked); //use add all to prevent a shallow copy
@@ -101,6 +105,7 @@ class _SelectableSmallCardGridState extends State<SelectableSmallCardGrid> {
         widget.texts[i],
         widget.fontSize,
         unselectable: false,
+        height: widget.cardHeightFactor * _SCREENHEIGHT,
         width: widget.cardWidthFactor * _SCREENWIDTH,
         onChanged: (bool selected) {
           onChanged(selected, i);
@@ -114,37 +119,53 @@ class _SelectableSmallCardGridState extends State<SelectableSmallCardGrid> {
       else {
         //otherwise, use predefined method of building
         //vertical orientation means Column with Row inside
+        var _children = <Widget>[
+          Padding(
+            padding: widget.innerSpacing,
+          ), //TODO: ABSTAND ERSETZEN
+          card,
+        ];
         if (widget.orientation == GroupedCardOrientation.VERTICAL) {
-          content.add(Row(children: <Widget>[
-            Padding(
-              padding: widget.innerSpacing,
-            ), //TODO: ABSTAND ERSETZEN
-            card,
-          ]));
+          content.add(Row(
+            children: _children,
+          ) //TODO: ABSTAND ERSETZEN
+              );
         } else {
           //horizontal orientation means Row with Column inside
-          content.add(Column(children: <Widget>[
-            Padding(
-              padding: widget.innerSpacing,
-            ), //TODO: ABSTAND ERSETZEN
-            card,
-          ]));
+          content.add(Column(children: _children));
         }
       }
     }
 
     bool vertical = widget.orientation == GroupedCardOrientation.VERTICAL;
+    List<Widget> items = [];
+    for (int i = 0; i < content.length; i += widget.crossAxisCount) {
+      var _items = <Widget>[];
+      for (int n = 0; n < widget.crossAxisCount; n++)
+        _items.add(content[i + n]);
+      items.add(Row(
+        children: _items,
+      ));
+    }
+
     return Container(
-      padding: widget.padding,
-      margin: widget.margin,
-      child: GridView.count(
+        padding: widget.padding,
+        margin: widget.margin,
+        child: vertical
+            ? Column(
+                children: items,
+              )
+            : Row(
+                children: items,
+              )
+        /*GridView.count(
           shrinkWrap: true,
           crossAxisCount: widget.crossAxisCount,
           scrollDirection: vertical ? Axis.vertical : Axis.horizontal,
           children: List.generate(widget.texts.length, (index) {
             return content[index];
-          })),
-    );
+          })),*/
+        );
   }
 
   void onChanged(bool isChecked, int i) {
