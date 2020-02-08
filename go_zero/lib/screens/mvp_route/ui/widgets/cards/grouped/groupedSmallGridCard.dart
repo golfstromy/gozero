@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:go_zero/screens/mvp_route/ui/widgets/cards/wideCard.dart';
 
-import '../../screensize.dart';
-import 'customCard.dart';
+import '../../../screensize.dart';
+import '../customCard.dart';
 import 'groupedOrientations.dart';
 
-const double _WIDECARDFONTSIZE = 14;
-
-class SelectableWideCardGroup extends StatefulWidget {
+class SelectableSmallCardGrid extends StatefulWidget {
   ///Texts in the Card
   final List<String> texts;
 
-  ///Images in the Card
-  final List<Widget> images;
+  ///how big the cards width is
+  final double cardWidthFactor;
+
+  ///how many cols the grid has
+  final int columns;
+
+  final double fontSize;
 
   ///Which cards are selected
   final List<String> checked;
 
-  /// Called when the value of the SelectableWideCardGroup changes.
+  /// Called when the value of the SelectableSmallCardGrid changes.
   final void Function(bool isChecked, String label, int index) onChange;
 
   /// Called when the user makes a selection.
@@ -29,27 +31,33 @@ class SelectableWideCardGroup extends StatefulWidget {
   /// Specifies the orientation to display elements.
   final GroupedCardOrientation orientation;
 
-  /// Called when needed to build a SelectableWideCardGroup element.
+  /// Called when needed to build a SelectableSmallCardGrid element.
   final Widget Function(TextSelectableCustomCard card, int index) itemBuilder;
 
   /// If true the Card's value can be true, false, or null.
   final bool tristate;
 
+  final int crossAxisCount;
+
   //SPACING STUFF
   final EdgeInsetsGeometry innerSpacing;
 
-  /// Empty space in which to inset the SelectableWideCardGroup.
+  /// Empty space in which to inset the SelectableSmallCardGrid.
   final EdgeInsetsGeometry padding;
 
-  /// Empty space surrounding the SelectableWideCardGroup.
+  /// Empty space surrounding the SelectableSmallCardGrid.
   final EdgeInsetsGeometry margin;
 
-  SelectableWideCardGroup({
+  SelectableSmallCardGrid({
     Key key,
     @required this.texts,
-    @required this.images,
+    this.columns = 2,
+    this.fontSize = 14,
     this.checked,
     this.onChange,
+    this.crossAxisCount = 2,
+    this.cardWidthFactor =
+        137 / 375, //Mockupwidth of small card:mockup screen width
     this.innerSpacing = const EdgeInsets.only(top: 0),
     this.onSelected,
     this.textStyle = const TextStyle(),
@@ -61,11 +69,11 @@ class SelectableWideCardGroup extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _SelectableWideCardGroupState createState() =>
-      _SelectableWideCardGroupState();
+  _SelectableSmallCardGridState createState() =>
+      _SelectableSmallCardGridState();
 }
 
-class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
+class _SelectableSmallCardGridState extends State<SelectableSmallCardGrid> {
   List<String> _selected = [];
   double _SCREENWIDTH;
 
@@ -91,14 +99,13 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
     for (int i = 0; i < widget.texts.length; i++) {
       TextSelectableCustomCard card = TextSelectableCustomCard(
         widget.texts[i],
-        _WIDECARDFONTSIZE,
-        width: 0.768 * _SCREENWIDTH,
+        widget.fontSize,
+        unselectable: false,
+        width: widget.cardWidthFactor * _SCREENWIDTH,
         onChanged: (bool selected) {
           onChanged(selected, i);
-          
         },
         selected: _selected.contains(widget.texts.elementAt(i)),
-        image: widget.images[i],
       );
 
       //use user defined method to build if it was defined
@@ -126,18 +133,23 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
       }
     }
 
+    bool vertical = widget.orientation == GroupedCardOrientation.VERTICAL;
     return Container(
       padding: widget.padding,
       margin: widget.margin,
-      child: widget.orientation == GroupedCardOrientation.VERTICAL
-          ? Column(children: content)
-          : Row(children: content),
+      child: GridView.count(
+          shrinkWrap: true,
+          crossAxisCount: widget.crossAxisCount,
+          scrollDirection: vertical ? Axis.vertical : Axis.horizontal,
+          children: List.generate(widget.texts.length, (index) {
+            return content[index];
+          })),
     );
   }
 
   void onChanged(bool isChecked, int i) {
     bool isAlreadyContained = _selected.contains(widget.texts.elementAt(i));
-    
+
     if (mounted) {
       setState(() {
         _selected.clear();

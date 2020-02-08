@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_zero/screens/mvp_route/ui/screensize.dart';
 import 'package:go_zero/screens/mvp_route/ui/textstyle.dart';
-import 'package:go_zero/screens/mvp_route/ui/widgets/cards/groupedSelectableCards.dart';
 
 import 'ui/colors.dart';
 import 'ui/images.dart';
 
+import 'ui/widgets/cards/customCard.dart';
+import 'ui/widgets/cards/grouped/groupedSelectableCards.dart';
+import 'ui/widgets/cards/grouped/groupedSmallGridCard.dart';
 import 'ui/widgets/cards/smallestCard.dart';
 import 'ui/widgets/inputs.dart';
 import 'ui/widgets/pressAnywhereLabel.dart';
@@ -84,6 +86,7 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                                 top: _GAPBETWEENCARDSFACTOR *
                                     getScreenHeight(context)),
                             texts: ["Female", "Male"],
+                            checked: ["Female"],
                             images: [GoZeroIcons.female, GoZeroIcons.male])),
                     Padding(
                         padding: EdgeInsets.only(
@@ -91,7 +94,15 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                             left: 0.064 * getScreenWidth(context),
                             right: 0.064 * getScreenWidth(context)),
                         child: subHeadline(context, Icons.person, "Age")),
-                    //TODO: INSERT AGE
+                     SelectableSmallCardGrid(
+                      padding: EdgeInsets.only(
+                          top: 0.035 * getScreenHeight(context),
+                          left: 0.12 * getScreenWidth(context)),
+                      innerSpacing: EdgeInsets.only(
+                          top: _GAPBETWEENCARDSFACTOR *
+                              getScreenHeight(context)),
+                      texts: ["0 - 17", "18 - 29", "30 - 59", "60+"],
+                    ),
                     Padding(
                         padding: EdgeInsets.only(
                             top: 0.045 * getScreenHeight(context),

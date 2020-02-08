@@ -142,10 +142,11 @@ class TextSelectableCustomCard extends StatefulWidget {
   final double width;
   final double height;
   final String text;
+  final bool unselectable;
   final ValueChanged<bool> onChanged;
   final Widget image;
   final double fontSize;
-  bool selected = false;
+  bool selected;
 
   TextSelectableCustomCard(
     this.text,
@@ -154,8 +155,9 @@ class TextSelectableCustomCard extends StatefulWidget {
     this.width,
     this.height,
     this.image,
+    this.unselectable = true,
     this.onChanged,
-    this.selected,
+    this.selected = false,
   }) : super(key: key);
 
   @override
@@ -169,10 +171,12 @@ class TextSelectableCustomCardState extends State<TextSelectableCustomCard> {
     return GestureDetector(
         onTap: () {
           setState(() {
-            print("Previous setting for ${widget.text}: " +
-                widget.selected.toString());
-            widget.selected = !widget.selected;
-            widget.onChanged(widget.selected);
+            if (widget.unselectable || !widget.selected) {
+              widget.selected = !widget.selected;
+              widget.onChanged(widget.selected);
+            }
+            //if unselectable, swap state onTap.
+            //otherwise, only swap state if the card is not selected
           });
         },
         child: Container(
@@ -192,7 +196,7 @@ class TextSelectableCustomCardState extends State<TextSelectableCustomCard> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 ListTile(
-                  trailing: widget.image != null ? widget.image : Container(),
+                  trailing: widget.image != null ? widget.image : SizedBox(),
                   title: Text(widget.text,
                       style: GoZeroTextStyles.regular(widget.fontSize,
                           color: widget.selected
