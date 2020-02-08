@@ -6,7 +6,6 @@ import 'package:go_zero/screens/mvp_route/ui/textstyle.dart';
 import 'ui/colors.dart';
 import 'ui/images.dart';
 
-import 'ui/widgets/cards/customCard.dart';
 import 'ui/widgets/cards/grouped/groupedSelectableCards.dart';
 import 'ui/widgets/cards/grouped/groupedSmallGridCard.dart';
 import 'ui/widgets/cards/smallestCard.dart';
@@ -95,6 +94,7 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                             right: 0.064 * getScreenWidth(context)),
                         child: subHeadline(context, Icons.person, "Age")),
                      SelectableSmallCardGrid(
+                       
                       padding: EdgeInsets.only(
                           top: 0.035 * getScreenHeight(context),
                           left: 0.12 * getScreenWidth(context)),

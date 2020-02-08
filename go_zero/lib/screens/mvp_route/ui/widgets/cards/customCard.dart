@@ -88,6 +88,7 @@ class CustomCardWithoutSelectionState
 }
 
 class OnlyTextSelectableCustomCard extends StatefulWidget {
+  //TODO Ersetzen mit TextSelectableCustomCard
   final double width;
   final double height;
   final String text;
