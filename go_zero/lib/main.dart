@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:http/http.dart' as http;
-
 
 import 'screens/mvp_route/screen1.dart';
 import 'screens/mvp_route/screen2.dart';
