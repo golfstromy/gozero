@@ -10,10 +10,9 @@ import 'ui/widgets/cards/grouped/groupedSelectableCards.dart';
 import 'ui/widgets/cards/grouped/groupedSmallGridCard.dart';
 import 'ui/widgets/cards/smallestCard.dart';
 import 'ui/widgets/inputs.dart';
-import 'ui/widgets/pressAnywhereLabel.dart';
 import 'ui/widgets/progressbar.dart';
 
-const String NEXTSCREEN = "/screen8"; //TODO: Fixen nach Entwurf von Screen6
+const String NEXTSCREEN = "/screen6"; //TODO: Fixen nach Entwurf von Screen6
 
 class MyPersonScreen extends StatefulWidget {
   @override
@@ -181,10 +180,10 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
               ),
             )),
         Align(
-          alignment: Alignment.bottomCenter,
+          alignment: Alignment.topCenter,
           child: Padding(
-              padding: EdgeInsets.only(bottom: 50),
-              child: FlatButton(
+              padding: EdgeInsets.only(top: (620/667)*getScreenHeight(context)),
+              child: RaisedButton(
                 //TODO: Ästhethisch gestalten & positionieren
                 child: Text("CONTINUE"),
                 onPressed: () {
