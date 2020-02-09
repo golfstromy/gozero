@@ -28,6 +28,13 @@ const double _GAPBETWEENCARDSFACTOR = 16 / 667;
 const double _WEIGHTSLIDERMIN = 1;
 const double _WEIGHTSLIDERMAX = 200;
 const double _WEIGHTINITVALUE = 80;
+
+/*const preselections = {
+  "Gender": ["Female"],
+  "Age": ["0 - 17"],
+  "Weight": _WEIGHTINITVALUE
+}; //Map<String, Object>*/
+
 const double _WEIGHTFONTSIZE = 14;
 
 const double _WEIGHTTEXTMARGINFCT = 27 /
@@ -93,8 +100,7 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                             left: 0.064 * getScreenWidth(context),
                             right: 0.064 * getScreenWidth(context)),
                         child: subHeadline(context, Icons.person, "Age")),
-                     SelectableSmallCardGrid(
-                       
+                    SelectableSmallCardGrid(
                       padding: EdgeInsets.only(
                           top: 0.035 * getScreenHeight(context),
                           left: 0.12 * getScreenWidth(context)),
@@ -102,6 +108,7 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                           top: _GAPBETWEENCARDSFACTOR *
                               getScreenHeight(context)),
                       texts: ["0 - 17", "18 - 29", "30 - 59", "60+"],
+                      checked: ["0 - 17"],
                     ),
                     Padding(
                         padding: EdgeInsets.only(
@@ -173,7 +180,6 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                 ),
               ),
             )),
-        pressAnywhere(context),
         Align(
           alignment: Alignment.bottomCenter,
           child: Padding(

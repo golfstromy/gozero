@@ -13,7 +13,7 @@ class SelectableWideCardGroup extends StatefulWidget {
   ///Images in the Card
   final List<Widget> images;
 
-  ///Which card is selected (only 1!)
+  ///Which card is selected (only 1 if onlyOneSelectable is true!)
   final List<String> checked;
 
   /// Called when the value of the SelectableWideCardGroup changes.
@@ -74,7 +74,6 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
   @override
   void initState() {
     super.initState();
-
     //set the selected to the checked (if not null)
     _selected = widget.checked ?? [];
   }
@@ -83,10 +82,10 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
   Widget build(BuildContext context) {
     //set the selected to the checked (if not null)
     _SCREENWIDTH = getScreenWidth(context);
-    if (widget.checked != null) {
+    /*if (widget.checked != null) {
       _selected = [];
       _selected.addAll(widget.checked); //use add all to prevent a shallow copy
-    }
+    }*/
 
     List<Widget> content = [];
 
@@ -98,7 +97,6 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
         width: 0.768 * _SCREENWIDTH,
         onChanged: (bool selected) {
           onChanged(selected, i);
-          
         },
         selected: _selected.contains(widget.texts.elementAt(i)),
         image: widget.images[i],
@@ -140,7 +138,7 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
 
   void onChanged(bool isChecked, int i) {
     bool isAlreadyContained = _selected.contains(widget.texts.elementAt(i));
-    
+
     if (mounted) {
       setState(() {
         _selected.clear();

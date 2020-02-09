@@ -13,6 +13,8 @@ class SelectableSmallCardGrid extends StatefulWidget {
 
   final double cardHeightFactor;
 
+  final bool onlyOneSelectable;
+
   ///how many cols the grid has
   final int columns;
 
@@ -63,6 +65,7 @@ class SelectableSmallCardGrid extends StatefulWidget {
         137 / 375, //Mockupwidth of small card:mockup screen width
     this.innerSpacing = const EdgeInsets.only(top: 0),
     this.onSelected,
+    this.onlyOneSelectable = true,
     this.textStyle = const TextStyle(),
     this.tristate = false,
     this.orientation = GroupedCardOrientation.VERTICAL,
@@ -93,10 +96,10 @@ class _SelectableSmallCardGridState extends State<SelectableSmallCardGrid> {
     //set the selected to the checked (if not null)
     _SCREENWIDTH = getScreenWidth(context);
     _SCREENHEIGHT = getScreenHeight(context);
-    if (widget.checked != null) {
+    /*if (widget.checked != null) {
       _selected = [];
       _selected.addAll(widget.checked); //use add all to prevent a shallow copy
-    }
+    }*/
 
     List<Widget> content = [];
 
@@ -104,7 +107,7 @@ class _SelectableSmallCardGridState extends State<SelectableSmallCardGrid> {
       TextSelectableCustomCard card = TextSelectableCustomCard(
         widget.texts[i],
         widget.fontSize,
-        unselectable: false,
+        unselectable: !widget.onlyOneSelectable,
         height: widget.cardHeightFactor * _SCREENHEIGHT,
         width: widget.cardWidthFactor * _SCREENWIDTH,
         onChanged: (bool selected) {
@@ -143,6 +146,7 @@ class _SelectableSmallCardGridState extends State<SelectableSmallCardGrid> {
       var _items = <Widget>[];
       for (int n = 0; n < widget.crossAxisCount; n++)
         _items.add(content[i + n]);
+
       items.add(Row(
         children: _items,
       ));
