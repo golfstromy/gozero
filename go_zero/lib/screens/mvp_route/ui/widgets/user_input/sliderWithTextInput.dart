@@ -17,13 +17,16 @@ class SliderWithTextInput extends StatefulWidget {
   final ValueChanged onChangedText;
   final ValueChanged onChangedSlider;
   final Object val;
+  final EdgeInsets padding;
+
   SliderWithTextInput(
       {@required this.controller,
       @required this.min,
       @required this.max,
       @required this.onChangedText,
       @required this.onChangedSlider,
-      @required this.val});
+      @required this.val,
+      this.padding});
 
   @override
   _SliderWithTextInputState createState() => _SliderWithTextInputState();
@@ -32,45 +35,46 @@ class SliderWithTextInput extends StatefulWidget {
 class _SliderWithTextInputState extends State<SliderWithTextInput> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        SmallestCard(
-          setHeight: false,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(
-                    //TODO: Optimierung Anzeige
-                    left: _SLIDERTEXTMARGINFCT * getScreenWidth(context),
-                    right: _SLIDERTEXTMARGINFCT * getScreenWidth(context)),
-                child: TextField(
-                    inputFormatters: [
-                      LengthLimitingTextInputFormatter(3),
-                    ],
-                    style: GoZeroTextStyles.regular(_SLIDERFONTSIZE,
-                        color: GoZeroColors.green),
-                    decoration: InputDecoration(border: InputBorder.none),
-                    controller: widget.controller,
-                    keyboardType: TextInputType.number,
-                    onChanged: widget.onChangedText),
-              )
-            ],
-          ),
-          selectable: false,
-        ),
-        Slider(
-          //TODO: Nur ganzzahlig Option
-
-          min: widget.min,
-          max: widget.max,
-          onChanged: widget.onChangedSlider,
-          value: widget.val,
-        )
-      ],
-    );
+    return Container(
+        padding: widget.padding ?? EdgeInsets.all(0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SmallestCard(
+              setHeight: false,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(
+                        //TODO: Optimierung Anzeige
+                        left: _SLIDERTEXTMARGINFCT * getScreenWidth(context),
+                        right: _SLIDERTEXTMARGINFCT * getScreenWidth(context)),
+                    child: TextField(
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(3),
+                        ],
+                        style: GoZeroTextStyles.regular(_SLIDERFONTSIZE,
+                            color: GoZeroColors.green),
+                        decoration: InputDecoration(border: InputBorder.none),
+                        controller: widget.controller,
+                        keyboardType: TextInputType.number,
+                        onChanged: widget.onChangedText),
+                  )
+                ],
+              ),
+              selectable: false,
+            ),
+            Slider(
+              //TODO: Nur ganzzahlig Option
+              min: widget.min,
+              max: widget.max,
+              onChanged: widget.onChangedSlider,
+              value: widget.val,
+            )
+          ],
+        ));
   }
 }

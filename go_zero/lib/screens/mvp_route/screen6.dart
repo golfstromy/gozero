@@ -90,7 +90,7 @@ class _LivingScreenState extends State<LivingScreen> {
               max: _LIVINGSPACEMAX,
               onChangedText: (newVal) {
                 setState(() {
-                  _dLivingSpace = int.parse(newVal) <= _LIVINGSPACEMIN
+                  _dLivingSpace = int.parse(newVal) <= _LIVINGSPACEMAX
                       ? int.parse(newVal).toDouble()
                       : _LIVINGSPACEMAX;
                 });
