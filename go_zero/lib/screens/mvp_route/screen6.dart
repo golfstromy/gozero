@@ -1,39 +1,36 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:go_zero/screens/mvp_route/ui/screensize.dart';
-import 'package:go_zero/screens/mvp_route/ui/textstyle.dart';
+import 'package:go_zero/screens/mvp_route/ui/widgets/user_input/sliderWithTextInput.dart';
 
 import 'ui/colors.dart';
-import 'ui/images.dart';
+import 'ui/screensize.dart';
+import 'ui/textstyle.dart';
 
-import 'ui/widgets/cards/grouped/groupedSelectableCards.dart';
 import 'ui/widgets/cards/grouped/groupedSmallGridCard.dart';
-import 'ui/widgets/cards/smallestCard.dart';
-import 'ui/widgets/inputs.dart';
-import 'ui/widgets/progressbar.dart';
+import 'ui/widgets/continueButton.dart';
 
-const String NEXTSCREEN = "/screen8"; //TODO: Fixen nach Entwurf von Screen6
+import 'ui/widgets/progressbar.dart';
+import 'ui/widgets/user_input/question.dart';
+
+const String NEXTSCREEN = "/screen7";
+const IconData ICON = Icons.home;
+const String _TITLE = "Living";
+const int INDEX = 4;
 
 class LivingScreen extends StatefulWidget {
   @override
   _LivingScreenState createState() => _LivingScreenState();
 }
 
-const String _TITLE = "Living";
-
-const int INDEX = 4;
-
 const double _TITLEFONTSIZE = 24;
 const double _GAPBETWEENCARDSFACTOR = 16 / 667;
-const double _SLIDERFONTSIZE = 14;
-const double _SLIDERTEXTMARGINFCT = 27 / 375; //MARGIN:SCREENWIDTH px in Mockup
+//MARGIN:SCREENWIDTH px in Mockup
 
-const double _PEOPLEHOUSEHOLDMIN = 1;
+const double _PEOPLEHOUSEHOLDMIN = 0;
 const double _PEOPLEHOUSEHOLDMAX = 20;
-const double _PEOPLEHOUSEHOLDINIT = 3;
+const double _PEOPLEHOUSEHOLDINIT = 2;
 
 const double _LIVINGSPACEMIN = 7;
-const double _LIVINGSPACEMAX = 1000;
+const double _LIVINGSPACEMAX = 400;
 const double _LIVINGSPACEINIT = 70;
 
 double _dHousehold = _PEOPLEHOUSEHOLDINIT;
