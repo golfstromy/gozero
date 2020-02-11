@@ -4,6 +4,7 @@ import 'package:go_zero/screens/mvp_route/ui/textstyle.dart';
 import '../colors.dart';
 import '../screensize.dart';
 
+
 const double _SUBHEADLINEFONTSIZE = 14;
 const double _ICONSIZE = 16;
 
@@ -14,7 +15,7 @@ Widget subHeadline(BuildContext context, IconData icon, String title) {
       Row(
         children: <Widget>[
           Icon(
-            Icons.person,
+            icon,
             size: _ICONSIZE,
             color: GoZeroColors.yellow,
           ),
