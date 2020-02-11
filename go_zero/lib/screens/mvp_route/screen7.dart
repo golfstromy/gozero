@@ -9,9 +9,7 @@ import 'ui/screensize.dart';
 import 'ui/textstyle.dart';
 
 import 'ui/widgets/cards/grouped/groupedSmallGridCard.dart';
-import 'ui/widgets/cards/smallestCard.dart';
 import 'ui/widgets/continueButton.dart';
-import 'ui/widgets/inputs.dart';
 import 'ui/widgets/progressbar.dart';
 import 'ui/widgets/user_input/question.dart';
 import 'ui/widgets/user_input/sliderWithTextInput.dart';
