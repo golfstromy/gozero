@@ -54,64 +54,82 @@ class _LivingScreenState extends State<LivingScreen> {
       context,
       topPadding: 0.048 * getScreenHeight(context),
       subheadlineText: "Number of people you are living with",
-      subheadlineIcon: Icons.home, //TODO: Icons ersetzen?
+      subheadlineIcon: ICON, //TODO: Icons ersetzen?
       possibleAnswers: Padding(
           padding: EdgeInsets.only(top: 0.038 * getScreenHeight(context)),
-          child: slider(context,
+          child: SliderWithTextInput(
               controller: _householdController,
               min: _PEOPLEHOUSEHOLDMIN,
-              max: _PEOPLEHOUSEHOLDMAX, onChangedText: (newVal) {
-            setState(() {
-              _dHousehold = int.parse(newVal) <= _PEOPLEHOUSEHOLDMAX
-                  ? int.parse(newVal).toDouble()
-                  : _PEOPLEHOUSEHOLDMAX;
-            });
-          }, onChangedSlider: (value) {
-            setState(() {
-              _dHousehold = value;
-              _householdController.text = value.round().toString();
-            });
-          }, val: _dHousehold)),
+              max: _PEOPLEHOUSEHOLDMAX,
+              onChangedText: (newVal) {
+                setState(() {
+                  _dHousehold = int.parse(newVal) <= _PEOPLEHOUSEHOLDMAX
+                      ? int.parse(newVal).toDouble()
+                      : _PEOPLEHOUSEHOLDMAX;
+                });
+              },
+              onChangedSlider: (value) {
+                setState(() {
+                  _dHousehold = value;
+                  _householdController.text = value.round().toString();
+                });
+              },
+              val: _dHousehold)),
     );
 
     var question2 = question(
       context,
       topPadding: 0.045 * getScreenHeight(context),
       subheadlineText: "Living space in m²",
-      subheadlineIcon: Icons.home,
+      subheadlineIcon: ICON,
       possibleAnswers: Padding(
           padding: EdgeInsets.only(top: 0.038 * getScreenHeight(context)),
-          child: slider(context,
+          child: SliderWithTextInput(
               controller: _livingSpaceController,
               min: _LIVINGSPACEMIN,
-              max: _LIVINGSPACEMAX, onChangedText: (newVal) {
-            setState(() {
-              _dLivingSpace = int.parse(newVal) <= _LIVINGSPACEMIN
-                  ? int.parse(newVal).toDouble()
-                  : _LIVINGSPACEMAX;
-            });
-          }, onChangedSlider: (value) {
-            setState(() {
-              _dLivingSpace = value;
-              _livingSpaceController.text = value.round().toString();
-            });
-          }, val: _dLivingSpace)),
+              max: _LIVINGSPACEMAX,
+              onChangedText: (newVal) {
+                setState(() {
+                  _dLivingSpace = int.parse(newVal) <= _LIVINGSPACEMIN
+                      ? int.parse(newVal).toDouble()
+                      : _LIVINGSPACEMAX;
+                });
+              },
+              onChangedSlider: (value) {
+                setState(() {
+                  _dLivingSpace = value;
+                  _livingSpaceController.text = value.round().toString();
+                });
+              },
+              val: _dLivingSpace)),
     );
 
     var question3 = question(
       context,
       topPadding: 0.045 * getScreenHeight(context),
-      subheadlineText: "Living space in m²",
-      subheadlineIcon: Icons.home,
-      possibleAnswers: SelectableSmallCardGrid( //TODO: Text richtig in eine Zeile
+      subheadlineText: "Year of construction/standard of the house",
+      subheadlineIcon: ICON,
+      possibleAnswers: SelectableSmallCardGrid(
+        //TODO: Text richtig in eine Zeile
         crossAxisCount: 3,
-        cardWidthFactor: 89/375,
+        cardWidthFactor: 89 / 375,
         padding: EdgeInsets.only(
             top: 0.035 * getScreenHeight(context),
             left: 0.12 * getScreenWidth(context)),
         innerSpacing: EdgeInsets.only(
-            top: _GAPBETWEENCARDSFACTOR * getScreenHeight(context), right: 12/375*getScreenWidth(context)),
-        texts: ["- 1978", "1979 - 1983", "1984 - 1994", "1995 - 2001", "2001+", "- 1919*", "1920 - 1948*", "1949 - 2001*", "unknown"],
+            top: _GAPBETWEENCARDSFACTOR * getScreenHeight(context),
+            right: 12 / 375 * getScreenWidth(context)),
+        texts: [
+          "- 1978",
+          "1979 - 1983",
+          "1984 - 1994",
+          "1995 - 2001",
+          "2001+",
+          "- 1919*",
+          "1920 - 1948*",
+          "1949 - 2001*",
+          "unknown"
+        ],
         checked: ["- 1978"],
         //TODO: Sternchen Erklärung
       ),
