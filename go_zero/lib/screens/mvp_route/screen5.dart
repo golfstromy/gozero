@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:go_zero/screens/mvp_route/ui/screensize.dart';
-import 'package:go_zero/screens/mvp_route/ui/textstyle.dart';
+import 'package:go_zero/backend/screenInfo.dart';
+import 'package:go_zero/screens/mvp_route/ui/widgets/continueButton.dart';
 
 import 'ui/colors.dart';
 import 'ui/images.dart';
+import 'ui/screensize.dart';
+import 'ui/textstyle.dart';
 
 import 'ui/widgets/cards/grouped/groupedSelectableCards.dart';
 import 'ui/widgets/cards/grouped/groupedSmallGridCard.dart';
@@ -12,7 +14,7 @@ import 'ui/widgets/cards/smallestCard.dart';
 import 'ui/widgets/inputs.dart';
 import 'ui/widgets/progressbar.dart';
 
-const String NEXTSCREEN = "/screen6"; //TODO: Fixen nach Entwurf von Screen6
+const String NEXTSCREEN = "/screen6";
 
 class MyPersonScreen extends StatefulWidget {
   @override
@@ -21,7 +23,7 @@ class MyPersonScreen extends StatefulWidget {
 
 const String _TITLE = "My Person";
 const int INDEX = 3;
-const double _TITLEFONTSIZE = 24;
+const double _TITLEFONTSIZE = QuestionScreen.TITLEFONTSIZE;
 const double _GAPBETWEENCARDSFACTOR = 16 / 667;
 
 const double _WEIGHTSLIDERMIN = 1;
@@ -179,18 +181,7 @@ class _MyPersonScreenState extends State<MyPersonScreen> {
                 ),
               ),
             )),
-        Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-              padding: EdgeInsets.only(top: (620/667)*getScreenHeight(context)),
-              child: RaisedButton(
-                //TODO: Ästhethisch gestalten & positionieren
-                child: Text("CONTINUE"),
-                onPressed: () {
-                  Navigator.pushNamed(context, NEXTSCREEN);
-                },
-              )),
-        )
+        continueButton(context, NEXTSCREEN)
       ],
     )));
   }
