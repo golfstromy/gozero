@@ -7,6 +7,7 @@ import 'screens/mvp_route/screen3.dart';
 import 'screens/mvp_route/screen4.dart';
 import 'screens/mvp_route/screen5.dart';
 import 'screens/mvp_route/screen6.dart';
+import 'screens/mvp_route/screen7.dart';
 import 'screens/mvp_route/screen8.dart';
 import 'screens/mvp_route/screen9.dart';
 import 'screens/mvp_route/screen12.dart';
@@ -35,6 +36,7 @@ class GoZeroApp extends StatelessWidget {
         '/screen4': (context) => CalculateIntroScreen(),
         '/screen5': (context) => MyPersonScreen(),
         '/screen6': (context) => LivingScreen(),
+        '/screen7': (context) => MobilityScreen(),
         '/screen8': (context) => FootPrintResultScreen(),
         '/screen9': (context) => OffsetIntroScreen(),
         '/screen12': (context) => ShareIntroScreen(),
