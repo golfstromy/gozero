@@ -167,87 +167,8 @@ class _LivingScreenState extends State<LivingScreen> {
                 ),
               ),
             )),
-        Align(
-          alignment: Alignment.topCenter,
-          child: Padding(
-              padding:
-                  EdgeInsets.only(top: (620 / 667) * getScreenHeight(context)),
-              child: RaisedButton(
-                //TODO: Ästhethisch gestalten & positionieren
-                child: Text("CONTINUE"),
-                onPressed: () {
-                  Navigator.pushNamed(context, NEXTSCREEN);
-                },
-              )),
-        )
+        continueButton(context, NEXTSCREEN)
       ],
     )));
   }
-}
-
-List<Widget> question(BuildContext context,
-    {double topPadding = 0,
-    @required String subheadlineText,
-    @required IconData subheadlineIcon,
-    @required Widget possibleAnswers}) {
-  List<Widget> items = [];
-  items.add(
-    Padding(
-        padding: EdgeInsets.only(
-            top: topPadding,
-            left: 0.064 * getScreenWidth(context),
-            right: 0.064 * getScreenWidth(context)),
-        child: subHeadline(context, subheadlineIcon, subheadlineText)),
-  );
-  items.add(possibleAnswers);
-  return items;
-}
-
-Widget slider(BuildContext context,
-    {@required TextEditingController controller,
-    @required double min,
-    @required double max,
-    @required ValueChanged onChangedText,
-    @required ValueChanged onChangedSlider,
-    @required Object val}) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-      SmallestCard(
-        setHeight: false,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(
-                  //TODO: Optimierung Anzeige
-                  left: _SLIDERTEXTMARGINFCT * getScreenWidth(context),
-                  right: _SLIDERTEXTMARGINFCT * getScreenWidth(context)),
-              child: TextField(
-                  inputFormatters: [
-                    LengthLimitingTextInputFormatter(3),
-                  ],
-                  style: GoZeroTextStyles.regular(_SLIDERFONTSIZE,
-                      color: GoZeroColors.green),
-                  decoration: InputDecoration(border: InputBorder.none),
-                  controller: controller,
-                  keyboardType: TextInputType.number,
-                  onChanged: onChangedText),
-            )
-          ],
-        ),
-        selectable: false,
-      ),
-      Slider(
-        //TODO: Nur ganzzahlig Option
-
-        min: min,
-        max: max,
-        onChanged: onChangedSlider,
-        value: val,
-      )
-    ],
-  );
 }
