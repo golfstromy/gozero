@@ -29,7 +29,7 @@ const double _PEOPLEHOUSEHOLDMIN = 0;
 const double _PEOPLEHOUSEHOLDMAX = 20;
 const double _PEOPLEHOUSEHOLDINIT = 2;
 
-const double _LIVINGSPACEMIN = 7;
+const double _LIVINGSPACEMIN = 0;
 const double _LIVINGSPACEMAX = 400;
 const double _LIVINGSPACEINIT = 70;
 
