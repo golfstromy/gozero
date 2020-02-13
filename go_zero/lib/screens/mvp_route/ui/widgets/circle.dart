@@ -45,6 +45,30 @@ Widget circleWithText(BuildContext context, String blacktext, String greenText,
           )));
 }
 
+Widget circleWithStackedText(
+    BuildContext context, String blacktext, String greenText,
+    {String punctuationMark = ".",
+    double sizeFactor = DEFAULTWIDTHFACTOR,
+    double thickness = 2,
+    double fontSize = 18}) {
+  return circleWithStack(context,
+      sizeFactor: sizeFactor,
+      thickness: thickness,
+      child: RichText(
+          textAlign: TextAlign.center,
+          text: TextSpan(
+            style: GoZeroTextStyles.bold(fontSize: fontSize),
+            children: <TextSpan>[
+              TextSpan(text: blacktext),
+              TextSpan(
+                  text: greenText,
+                  style: GoZeroTextStyles.semibold(fontSize,
+                      color: GoZeroColors.green)),
+              TextSpan(text: punctuationMark),
+            ],
+          )));
+}
+
 const double _SMALLCIRCLEBIGFONTSIZE = 30;
 const double _SMALLCIRCLESMALLFONTSIZE = 18;
 
@@ -74,4 +98,25 @@ class SmallCircle extends StatelessWidget {
               )),
         ));
   }
+}
+
+Widget circleWithStack(BuildContext context, //ggf. als Row
+    {double sizeFactor = DEFAULTWIDTHFACTOR,
+    Widget child = const SizedBox(),
+    double thickness = 2}) {
+  return Stack(
+    children: <Widget>[
+      
+      Align(
+          alignment: Alignment.center,
+          child: Container(
+              width: sizeFactor * getScreenWidth(context),
+              height: sizeFactor * getScreenWidth(context),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                      color: GoZeroColors.controlGrey, width: thickness)))),
+      Align(alignment: Alignment.center, child: child),
+    ],
+  );
 }
