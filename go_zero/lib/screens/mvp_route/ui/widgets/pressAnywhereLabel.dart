@@ -7,7 +7,7 @@ import '../textstyle.dart';
 const double FONTSIZE = 9;
 
 Widget pressAnywhere(BuildContext context,
-    [Color color = GoZeroColors.yellow]) {
+    {Color color = GoZeroColors.yellow}) {
   return Align(
     alignment: Alignment.bottomCenter,
     child: Padding(
