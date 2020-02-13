@@ -130,7 +130,7 @@ class ChallengeScreen extends StatelessWidget {
                 )),
           ],
         ),
-        pressAnywhere(context, GoZeroColors.green)
+        pressAnywhere(context, color: GoZeroColors.green)
       ]),
     ));
   }
