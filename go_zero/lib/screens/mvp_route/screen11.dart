@@ -15,16 +15,14 @@ class _CongratulationsScreenState extends State<CongratulationsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: GoZeroColors.green,
         body: GestureDetector(
-          onTap: () {
-              Navigator.pushNamed(context, NEXTSCREEN);
-            },
-            child: Container(
-          child: Stack(children: <Widget>[
-            
-            pressAnywhere(context, color: Colors.white),
-          ]),
-        )));
+      onTap: () {
+        Navigator.pushNamed(context, NEXTSCREEN);
+      },
+      child: Stack(children: <Widget>[
+        Container(color: GoZeroColors.green),
+        pressAnywhere(context, color: Colors.white),
+      ]),
+    ));
   }
 }

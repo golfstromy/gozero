@@ -56,6 +56,9 @@ class _CompensateScreenState extends State<CompensateScreen> {
                       "Three months",
                       "One year"
                     ],
+                    onSelected: (selection) {
+                      Navigator.pushNamed(context, NEXTSCREEN); //TODO: Push with selection
+                    },
                     checked: ["One month"],
                   ))
             ]),
