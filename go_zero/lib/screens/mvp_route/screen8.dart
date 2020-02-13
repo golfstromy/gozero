@@ -9,6 +9,7 @@ import 'ui/colors.dart';
 import 'ui/widgets/circle.dart';
 import 'ui/widgets/colorfulCircle.dart';
 import 'ui/widgets/headline.dart';
+import 'ui/widgets/progressbar.dart';
 
 class FootPrintResultScreen extends StatefulWidget {
   @override
@@ -19,9 +20,10 @@ double _number = 13.3;
 double _avgGermany = 8.6;
 double _avgWorld = 4.8;
 
-const double _YHEIGHTFACTORBIGCIRCLE = 0.389;
+const double _YHEIGHTFACTORBIGCIRCLE = 148/667;
+const double _XFACTORBIGCIRLCE = 55 / 375;
 const String NEXTSCREEN = "/screen9";
-
+const int INDEX = 6;
 
 class _FootPrintResultScreenState extends State<FootPrintResultScreen> {
   @override
@@ -34,11 +36,16 @@ class _FootPrintResultScreenState extends State<FootPrintResultScreen> {
             child: Stack(
               children: <Widget>[
                 Container(color: GoZeroColors.background),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: progressbar(INDEX, context),
+                ),
                 Headline("YOUR FOOTPRINT"),
                 Align(
                     alignment: Alignment.topLeft,
                     child: Padding(
-                        padding: EdgeInsets.only(//TODO: Abstand nach links einfügen
+                        padding: EdgeInsets.only(
+                            left: _XFACTORBIGCIRLCE * getScreenWidth(context),
                             top: _YHEIGHTFACTORBIGCIRCLE *
                                 getScreenHeight(context)),
                         child: ColorfulCircle(_number,
@@ -53,8 +60,27 @@ class _FootPrintResultScreenState extends State<FootPrintResultScreen> {
                               Icons.home,
                               Icons.person_outline
                             ]))),
-                SmallCircleWithCaption(_avgGermany, unit: "t/year", caption: "Average in Germany"),
-                SmallCircleWithCaption(_avgWorld, unit: "t/year", caption: "Average in world"),
+                Align(
+                    alignment: Alignment.topLeft,
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                          top: 440 / 667 * getScreenHeight(context),
+                          left: 39 / 375 * getScreenWidth(context)),
+                      child: Row(
+                        children: <Widget>[
+                          SmallCircleWithCaption(_avgGermany,
+                              unit: "t/year",
+                              caption: "Average in Germany",
+                              padding: EdgeInsets.only(
+                                  right: 44 / 375 * getScreenWidth(context))),
+                          SmallCircleWithCaption(
+                            _avgWorld,
+                            unit: "t/year",
+                            caption: "Average in world",
+                          )
+                        ],
+                      ),
+                    )),
                 pressAnywhere(context)
               ],
             )));
