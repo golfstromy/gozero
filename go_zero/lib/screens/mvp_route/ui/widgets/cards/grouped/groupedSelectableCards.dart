@@ -48,7 +48,7 @@ class SelectableWideCardGroup extends StatefulWidget {
   SelectableWideCardGroup({
     Key key,
     @required this.texts,
-    @required this.images,
+    this.images = const [],
     this.checked,
     this.onChange,
     this.innerSpacing = const EdgeInsets.only(top: 0),
@@ -99,7 +99,7 @@ class _SelectableWideCardGroupState extends State<SelectableWideCardGroup> {
           onChanged(selected, i);
         },
         selected: _selected.contains(widget.texts.elementAt(i)),
-        image: widget.images[i],
+        image: widget.images.length > 0 ? widget.images[i] : null,
       );
 
       //use user defined method to build if it was defined
