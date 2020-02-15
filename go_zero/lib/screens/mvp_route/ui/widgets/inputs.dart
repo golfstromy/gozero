@@ -8,7 +8,7 @@ import '../screensize.dart';
 const double _SUBHEADLINEFONTSIZE = 14;
 const double _ICONSIZE = 16;
 
-Widget subHeadline(BuildContext context, IconData icon, String title) {
+Widget subHeadline(BuildContext context, IconData icon, String title, {Color iconColor=GoZeroColors.yellow}) {
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: <Widget>[
@@ -17,7 +17,7 @@ Widget subHeadline(BuildContext context, IconData icon, String title) {
           Icon(
             icon,
             size: _ICONSIZE,
-            color: GoZeroColors.yellow,
+            color: iconColor,
           ),
           Padding(
               padding: EdgeInsets.only(left: 0.032 * getScreenWidth(context)),
