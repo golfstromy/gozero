@@ -7,7 +7,6 @@ import 'package:go_zero/screens/mvp_route/ui/widgets/progressbar.dart';
 import 'ui/colors.dart';
 import 'ui/widgets/globe_bulletpoint.dart';
 
-const double _GAPMULTIPLIER = 2.3;
 const double _BULLETPOINTFONTSIZE = 14;
 const double _TITLEFONTSIZE = 17;
 const int INDEX = 0;
@@ -33,9 +32,9 @@ class ChallengeScreen extends StatelessWidget {
                 alignment: Alignment.topCenter,
                 child: Padding(
                   padding: EdgeInsets.only(
-                      top: _GAPMULTIPLIER *
+                      top: 
                           0.1154 *
-                          getScreenWidth(context)), //TODO: Fix alignment
+                          getScreenHeight(context)), //TODO: Fix alignment
                   child: Text(
                     "Climate change is the \nbiggest challenge humanity \nhas ever faced.",
                     style: GoZeroTextStyles.semibold(_TITLEFONTSIZE),
