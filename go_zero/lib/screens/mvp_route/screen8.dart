@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_zero/screens/mvp_route/ui/screensize.dart';
-import 'package:go_zero/screens/mvp_route/ui/textstyle.dart';
 import 'package:go_zero/screens/mvp_route/ui/widgets/circleCaption.dart';
 import 'package:go_zero/screens/mvp_route/ui/widgets/pressAnywhereLabel.dart';
 
 import 'ui/colors.dart';
-import 'ui/widgets/circle.dart';
 import 'ui/widgets/colorfulCircle.dart';
 import 'ui/widgets/headline.dart';
 import 'ui/widgets/progressbar.dart';
