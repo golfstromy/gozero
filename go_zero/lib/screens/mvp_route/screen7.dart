@@ -126,6 +126,8 @@ class _MobilityScreenState extends State<MobilityScreen> {
             },
             val: _dInternational));
 
+    List<List<Widget>> questions = [question1, question2, question3, question4];
+
     return Scaffold(
         body: SingleChildScrollView(
             child: Stack(
@@ -148,14 +150,8 @@ class _MobilityScreenState extends State<MobilityScreen> {
                             top: 0.087 * getScreenHeight(context)),
                         child: Text(_TITLE,
                             style: GoZeroTextStyles.semibold(_TITLEFONTSIZE))),
-                    question1[0], //QUESTION/APP OUTPUT
-                    question1[1], //ANSWER/USER INPUT
-                    question2[0],
-                    question2[1],
-                    question3[0],
-                    question3[1],
-                    question4[0],
-                    question4[1]
+                    ...questions
+                        .map((wholequestion) => Column(children: wholequestion))
                   ],
                 ),
               ),
