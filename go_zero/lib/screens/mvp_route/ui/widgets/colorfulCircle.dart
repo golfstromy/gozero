@@ -16,12 +16,14 @@ class ColorfulCircle extends StatefulWidget {
   final List<IconData> icons;
   final double fontSize;
   final double unitFontSize;
+  final Color borderColor;
 
   ColorfulCircle(this.number,
       {this.unit = "",
       this.colors = const [GoZeroColors.green],
       this.icons = const [],
       this.fontSize = _BIGFONTSIZE,
+      this.borderColor = GoZeroColors.controlGrey,
       this.unitFontSize = _SMALLFONTSIZE});
 
   @override
@@ -37,7 +39,7 @@ class _ColorfulCircleState extends State<ColorfulCircle> {
         height: _DEFAULTSIZEFACTOR * getScreenWidth(context),
         decoration: BoxDecoration(
             shape: BoxShape.circle,
-            border: Border.all(color: GoZeroColors.controlGrey, width: 2)),
+            border: Border.all(color: widget.borderColor, width: 2)),
         child: Stack(
           children: <Widget>[
             Align(
@@ -56,6 +58,7 @@ class _ColorfulCircleState extends State<ColorfulCircle> {
                       textAlign: TextAlign.right,
                       style: GoZeroTextStyles.semibold(widget.unitFontSize)),
                 )),
+                
           ],
         ));
   }
