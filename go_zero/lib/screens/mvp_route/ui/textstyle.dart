@@ -9,7 +9,8 @@ abstract class GoZeroTextStyles {
   static const double DEFAULTREGULARSIZE = MULTIPLIER * 9;
   //static const double RECOMMENDEDSPACING = 0.16;
 
-  static TextStyle semibold(double fontSize, {Color color = GoZeroColors.defaultText}) {
+  static TextStyle semibold(double fontSize,
+      {Color color = GoZeroColors.defaultText}) {
     return TextStyle(
         color: color,
         fontFamily: FONTFAMILY,
@@ -18,7 +19,8 @@ abstract class GoZeroTextStyles {
   }
 
   static TextStyle bold(
-      {Color color = GoZeroColors.defaultText, double fontSize = DEFAULTBOLDSIZE}) {
+      {Color color = GoZeroColors.defaultText,
+      double fontSize = DEFAULTBOLDSIZE}) {
     return TextStyle(
         color: color,
         fontFamily: FONTFAMILY,
@@ -40,7 +42,8 @@ abstract class GoZeroTextStyles {
   }
 
   static TextStyle medium(double fontSize,
-      {Color color = GoZeroColors.defaultText, double letterSpacingFactor = 0}) {
+      {Color color = GoZeroColors.defaultText,
+      double letterSpacingFactor = 0}) {
     return TextStyle(
       color: color,
       fontFamily: FONTFAMILY,
